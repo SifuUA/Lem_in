@@ -1,4 +1,7 @@
-//
-// Created by Oleksiy Kres on 3/27/17.
-//
+#include "lem_in.h"
+
+int		main(int argc, char **argv)
+{
+
+}
 
