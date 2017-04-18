@@ -12,6 +12,7 @@ typedef struct 		s_list
 	struct s_node	*head;
 	struct s_node	*tail;
 	int				size;
+
 }					t_list;
 
 
