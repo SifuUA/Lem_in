@@ -1,15 +1,19 @@
 #include "lem_in.h"
 
-void 	creat_list(void)
+t_list creat_list()
 {
+	t_list *tmp;
+	tmp = (t_list *)malloc(sizeof(t_list));
 
 }
 
 int		main(int argc, char **argv)
 {
-	if (argc > 1)
+	char *line;
+
+	while (get_next_line(0, &line))
 	{
-		creat_list();
-	}
+		ft_putstr(line);
+		ft_putstr("\n");}
 }
 
