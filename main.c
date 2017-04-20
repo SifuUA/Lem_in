@@ -39,6 +39,11 @@ int 	count_ver(char **str)
 	return (count);
 }
 
+char	*get_links(char **str)
+{
+
+}
+
 t_graph	*creat_graph(int count_v)
 {
 	t_graph * graph;
@@ -72,6 +77,7 @@ int		main(int argc, char **argv)
 	}
 	ft_arr_putstr(save);
 	ft_putnbr(count_ver(save));
-	creat_graph(count_ver(save));
+	graph = creat_graph(count_ver(save));
+	add_links(graph, get_links(save));
 }
 
