@@ -3,16 +3,25 @@
 
 # include "libft/libft.h"
 
-typedef struct		s_node
+typedef struct		s_vertices
 {
-	struct s_node	*next[];
-	struct s_node	*prev;
-}					t_str;
+	int 			dest;
+	struct s_node	*next;
+}					t_vertices;
 
-typedef struct 		s_lst
+typedef struct			s_head
 {
-	struct s_node	*head;
-	struct s_node	*tail;
-	int				size;
-}					t_lst;
+	struct s_vericies	*head;
+}						t_head;
+
+typedef struct 			s_graph
+{
+	int					count_vert;
+	struct s_verticies 	*array;
+}						t_graph;
+
+typedef struct 			s_all
+{
+
+};
 #endif
