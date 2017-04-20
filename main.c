@@ -5,29 +5,56 @@
 	**line = (**line)
 }*/
 
-int 	count_ver(char **str)
+/*int 	find_sharp(char *str)
 {
 	int i;
-	int j;
 
 	i = 0;
 	while (str[i])
 	{
-		j = 0;
-		while(str[i][j])
-		{
-			if (ft_strchr())
-		}
+		while (str[i] == ' ' || str[i] == '\t')
+			i++;
+		if (str[i] == '#' && str[i + 1] == '#')
+			return (1);
+		else
+			return (0);
 	}
+	return (0);
+}*/
+
+int 	count_ver(char **str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (ft_strchr(str[i], '#') == NULL && ft_strchr(str[i], '-') == NULL &&
+				ft_strchr(str[i], ' '))
+			count++;
+		i++;
+	}
+	return (count);
 }
 
 t_graph	*creat_graph(int count_v)
 {
 	t_graph * graph;
 
-	graph = (t_graph *)malloc(sizeof(t_graph));
-	graph->count_vert =
+	int i;
 
+	i = 0;
+	graph = (t_graph *)malloc(sizeof(t_graph));
+	graph->count_vert = count_v;
+	graph->array = (t_head *)malloc(sizeof(t_head) * count_v);
+	while (i < count_v)
+	{
+		graph->array[i].head = NULL;
+		i++;
+	}
+	return (graph);
 }
 
 int		main(int argc, char **argv)
@@ -44,6 +71,7 @@ int		main(int argc, char **argv)
 		save[i++] = ft_strdup(line);
 	}
 	ft_arr_putstr(save);
+	ft_putnbr(count_ver(save));
 	creat_graph(count_ver(save));
 }
 

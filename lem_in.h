@@ -17,11 +17,7 @@ typedef struct			s_head
 typedef struct 			s_graph
 {
 	int					count_vert;
-	struct s_verticies 	*array;
+	struct s_head	 	*array;
 }						t_graph;
 
-typedef struct 			s_all
-{
-
-};
 #endif
