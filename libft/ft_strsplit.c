@@ -77,4 +77,5 @@ char				**ft_strsplit(char const *s, char c)
 	else
 		return (NULL);
 	return (create_arr(s, c));
+	ффффф
 }
