@@ -20,7 +20,9 @@ void	find_vert(t_all *all, char **str)
 	i = 0;
 	while (str[i])
 	{
-		tmp = ft_strsplit(str[i], ' ');
+		//ft_putstr(str[i]);
+		//ft_putstr("\n");
+		ft_strsplit(str[i], ' ');
 		//int tmp = len_arr(ft_strsplit(str[i], ' '));
 		//ft_putnbr(tmp);
 		i++;

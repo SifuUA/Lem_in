@@ -29,11 +29,11 @@ int		main(int argc, char **argv)
 
 	i = 0;
 	save = (char **)malloc(sizeof(char *) * 1000);
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) && *line != '+')
 	{
-		save[i++] = ft_strdup(line);
+		save[i++] = line;
 	}
-	ft_arr_putstr(save);
+	//ft_arr_putstr(save);
 	find_vert(all, save);
 }
 
