@@ -1,48 +1,5 @@
+#include <stdio.h>
 #include "lem_in.h"
-
-/*void	get_mem(char **line)
-{
-	**line = (**line)
-}*/
-
-/*int 	find_sharp(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] == ' ' || str[i] == '\t')
-			i++;
-		if (str[i] == '#' && str[i + 1] == '#')
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
-}*/
-
-int 	count_ver(char **str)
-{
-	int i;
-	int count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (ft_strchr(str[i], '#') == NULL && ft_strchr(str[i], '-') == NULL &&
-				ft_strchr(str[i], ' '))
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-char	*get_links(char **str)
-{
-
-}
 
 t_graph	*creat_graph(int count_v)
 {
@@ -75,10 +32,14 @@ int		main(int argc, char **argv)
 	{
 		save[i++] = ft_strdup(line);
 	}
-	ft_arr_putstr(save);
+	//ft_arr_putstr(save);
 	ft_putnbr(count_ver(save));
-	graph = creat_graph(count_ver(save));
-	add_links(graph, get_links(save));
+	//graph = creat_graph(count_ver(save));
+
+
+
+
+	//add_links(graph, get_links(save));
 }
 
 //пробовать разбивать сплитом по пробелам и проверять к-во строк

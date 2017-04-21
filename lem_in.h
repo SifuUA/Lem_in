@@ -20,4 +20,9 @@ typedef struct 			s_graph
 	struct s_head	 	*array;
 }						t_graph;
 
+typedef struct 			t_all
+{
+	char 				**links;
+	char 				**verticies;
+}						s_all;
 #endif
