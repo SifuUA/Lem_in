@@ -20,9 +20,12 @@ typedef struct 			s_graph
 	struct s_head	 	*array;
 }						t_graph;
 
-typedef struct 			t_all
+typedef struct 			s_all
 {
 	char 				**links;
 	char 				**verticies;
-}						s_all;
+}						t_all;
+
+void	find_vert(t_all *all, char **str);
+
 #endif

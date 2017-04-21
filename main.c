@@ -22,6 +22,7 @@ t_graph	*creat_graph(int count_v)
 int		main(int argc, char **argv)
 {
 	t_graph	*graph;
+	t_all 	*all;
 	char	*line;
 	char	**save;
 	int i;
@@ -32,14 +33,8 @@ int		main(int argc, char **argv)
 	{
 		save[i++] = ft_strdup(line);
 	}
-	//ft_arr_putstr(save);
-	ft_putnbr(count_ver(save));
-	//graph = creat_graph(count_ver(save));
-
-
-
-
-	//add_links(graph, get_links(save));
+	ft_arr_putstr(save);
+	find_vert(all, save);
 }
 
 //пробовать разбивать сплитом по пробелам и проверять к-во строк
