@@ -27,8 +27,8 @@ t_all	*creat_struct(int count_vert, int count_links)
 	all = (t_all *)malloc(sizeof(t_all));
 	all->start = NULL;
 	all->end = NULL;
-	all->verticies = (char *)malloc(sizeof(char) * count_vert  +1);
-	all->links = (char *)malloc(sizeof(char) * count_links + 1);
+	all->verticies = (char *)malloc(sizeof(char) * count_vert);
+	all->links = (char **)malloc(sizeof(char*) * count_links);
 	all->vert = count_vert;
 	all->link = count_links;
 }
@@ -85,6 +85,7 @@ int		main(int argc, char **argv)
 	ft_arr_putstr(save);
 	all = creat_struct(count_vert(save), count_links(save));
 	fill_all(all, save);
+	check(all);
 	close(fd);
 }
 

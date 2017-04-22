@@ -26,7 +26,7 @@ typedef struct 			s_all
 {
 	char				*start;
 	char 				*end;
-	char 				*links;
+	char 				**links;
 	char 				*verticies;
 	int					vert;
 	int					link;
@@ -35,5 +35,8 @@ typedef struct 			s_all
 
 void	fill_all(t_all *all, char **str);
 int		len_arr(char **arr);
+void 	free_arr(char **arr);
+int 	check(t_all *all);
+int		find(char *str, char c);
 
 #endif
