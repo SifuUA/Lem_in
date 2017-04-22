@@ -20,6 +20,50 @@ t_graph	*creat_graph(int count_v)
 	return (graph);
 }
 
+t_all	*creat_struct(int count_vert, int count_links)
+{
+	t_all *all;
+
+	all = (t_all *)malloc(sizeof(t_all));
+	all->start = NULL;
+	all->end = NULL;
+	all->verticies = (char **)malloc(sizeof(char *) * count_vert);
+	all->links = (char **)malloc(sizeof(char *) * count_links);
+}
+int		count_vert(char **str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (!ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
+				len_arr(ft_strsplit(str[i], ' ')) == 3)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int		count_links(char **str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
+			len_arr(ft_strsplit(str[i], '-')) == 2)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 int		main(int argc, char **argv)
 {
 	t_graph	*graph;
@@ -36,10 +80,11 @@ int		main(int argc, char **argv)
 	{
 		save[i++] = line;
 	}
-	//ft_arr_putstr(save);
-	fill_all(all, save);
+	ft_arr_putstr(save);
+	all = creat_struct(count_vert(save), count_links(save));
+	//fill_all(all, save);
 	close(fd);
 }
 
-//пробовать разбивать сплитом по пробелам и проверять к-во строк
-//точно также по дефисам и смотреть или 2 строки
+//подсчет кол-ва комнат
+//выделение памяти в структуре all под такое кол-во

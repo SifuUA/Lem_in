@@ -29,5 +29,6 @@ typedef struct 			s_all
 }						t_all;
 
 void	fill_all(t_all *all, char **str);
+int		len_arr(char **arr);
 
 #endif
