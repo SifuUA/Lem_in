@@ -25,14 +25,14 @@ void 	free_arr(char **arr)
 	free(arr);
 }
 
-int		find(char *str, char c)
+int		find(char *str, char c, char b)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == c)
+		if (str[i] == c || str[i] == b)
 			return (1);
 		i++;
 	}

@@ -36,7 +36,7 @@ typedef struct 			s_all
 void	fill_all(t_all *all, char **str);
 int		len_arr(char **arr);
 void 	free_arr(char **arr);
-int 	check(t_all *all);
-int		find(char *str, char c);
+void 	check(t_all *all);
+int		find(char *str, char c, char b);
 
 #endif

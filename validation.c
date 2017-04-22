@@ -9,9 +9,13 @@ void 	write_vert(char *str, t_all *all)
 
 void 	write_link(char *str, t_all *all)
 {
+	char 		**tmp;
 	static int j;
 
-	all->links[j++] = str;
+	tmp = ft_strsplit(str, '-');
+	all->links[j++] = tmp[0];
+	all->links[j++] = tmp[1];
+	free_arr(tmp);
 }
 
 void 	write_start(char **str, int i, t_all * all)
@@ -46,8 +50,8 @@ void	fill_all(t_all *all, char **str)
 		else if (!ft_strchr(str[i], '-') &&
 				len_arr(ft_strsplit(str[i], ' ')) == 3)
 			write_vert(str[i], all);
-		else if (!ft_strchr(str[i], '#') &&
-				 len_arr(ft_strsplit(str[i], '-')) == 2)
+		else if (!ft_strchr(str[i], '#') && ft_strchr(str[i], '-')
+				 && len_arr(ft_strsplit(str[i], '-')) == 2)
 			write_link(str[i], all);
 		if (ft_strstr(str[i], "##start") && str[i + 1])
 			write_start(str, i, all);
@@ -57,13 +61,21 @@ void	fill_all(t_all *all, char **str)
 	}
 }
 
-int 	check(t_all *all)
+void 	check(t_all *all)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (i < all->link)
 	{
-		if (all->links[i][0])
+		j = 0;
+		if (!find(all->verticies, all->links[i][j],
+				all->links[i][j + 1]))
+		{
+			ft_putstr("Error");
+			exit(2);
+		}
+		i++;
 	}
 }
