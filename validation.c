@@ -12,19 +12,26 @@ int		len_arr(char **arr)
 	return (i);
 }
 
-void	find_vert(t_all *all, char **str)
+void	fill_all(t_all *all, char **str)
 {
-	int i;
-	char **tmp;
+	int		i;
+	char	**tmp;
 
 	i = 0;
 	while (str[i])
 	{
-		//ft_putstr(str[i]);
-		//ft_putstr("\n");
-		ft_strsplit(str[i], ' ');
-		//int tmp = len_arr(ft_strsplit(str[i], ' '));
-		//ft_putnbr(tmp);
+		if (!ft_strchr(str[i], '-'))
+		{
+			if (ft_strstr(str[i], "##start") && str[i + 1])
+				all->start = ft_strsplit(str[++i], ' ');
+			else if (ft_strstr(str[i], "##end"))
+				all->start = ft_strsplit(str[++i], ' ');
+			//tmp = ft_strsplit(str[i], ' ');
+		}
+		//ft_arr_putstr(tmp);
+		//ft_putstr("**********************\n");
+		//int len = len_arr(tmp);
+		//ft_putnbr(len);
 		i++;
 	}
 }

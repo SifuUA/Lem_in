@@ -29,15 +29,15 @@ int		main(int argc, char **argv)
 	int fd;
 	int i;
 
-	fd = open("test.txt", O_RDONLY);
 	i = 0;
+	fd = open("test.txt", O_RDONLY);
 	save = (char **)malloc(sizeof(char *) * 1000);
 	while (get_next_line(fd, &line) && *line != 0)
 	{
 		save[i++] = line;
 	}
-	ft_arr_putstr(save);
-	find_vert(all, save);
+	//ft_arr_putstr(save);
+	fill_all(all, save);
 }
 
 //пробовать разбивать сплитом по пробелам и проверять к-во строк

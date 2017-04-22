@@ -22,10 +22,12 @@ typedef struct 			s_graph
 
 typedef struct 			s_all
 {
+	char				**start;
+	char 				**end;
 	char 				**links;
 	char 				**verticies;
 }						t_all;
 
-void	find_vert(t_all *all, char **str);
+void	fill_all(t_all *all, char **str);
 
 #endif
