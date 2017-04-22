@@ -34,7 +34,7 @@ static int			count_of_words(char const *s, char c)
 	words = 0;
 	while (*s)
 	{
-		while (*s != c)
+		while (*s && *s != c)
 			s++;
 		words++;
 		s = split_start(s, c);

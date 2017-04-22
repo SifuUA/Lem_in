@@ -2,6 +2,8 @@
 #define LEM_IN_LEM_IN_H
 
 # include "libft/libft.h"
+# include <stdio.h>
+
 
 typedef struct		s_vertices
 {
@@ -24,8 +26,11 @@ typedef struct 			s_all
 {
 	char				*start;
 	char 				*end;
-	char 				**links;
-	char 				**verticies;
+	char 				*links;
+	char 				*verticies;
+	int					vert;
+	int					link;
+	long int			ants;
 }						t_all;
 
 void	fill_all(t_all *all, char **str);
