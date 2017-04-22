@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/fcntl.h>
 #include "lem_in.h"
 
 t_graph	*creat_graph(int count_v)
@@ -25,15 +26,17 @@ int		main(int argc, char **argv)
 	t_all 	*all;
 	char	*line;
 	char	**save;
+	int fd;
 	int i;
 
+	fd = open("test.txt", O_RDONLY);
 	i = 0;
 	save = (char **)malloc(sizeof(char *) * 1000);
-	while (get_next_line(0, &line) && *line != '+')
+	while (get_next_line(fd, &line) && *line != 0)
 	{
 		save[i++] = line;
 	}
-	//ft_arr_putstr(save);
+	ft_arr_putstr(save);
 	find_vert(all, save);
 }
 
