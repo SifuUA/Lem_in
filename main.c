@@ -38,6 +38,7 @@ int		main(int argc, char **argv)
 	}
 	//ft_arr_putstr(save);
 	fill_all(all, save);
+	close(fd);
 }
 
 //пробовать разбивать сплитом по пробелам и проверять к-во строк
