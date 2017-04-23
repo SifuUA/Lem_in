@@ -1,0 +1,33 @@
+#include "lem_in.h"
+
+t_graph	*creat_graph(int count_v)
+{
+	t_graph * graph;
+
+	int i;
+
+	i = 0;
+	graph = (t_graph *)malloc(sizeof(t_graph));
+	graph->count_vert = count_v;
+	graph->array = (t_head *)malloc(sizeof(t_head) * count_v);
+	while (i < count_v)
+	{
+		graph->array[i].head = NULL;
+		i++;
+	}
+	return (graph);
+}
+
+t_all	*creat_struct(int count_vert, int count_links)
+{
+	t_all *all;
+
+	all = (t_all *)malloc(sizeof(t_all));
+	all->start = NULL;
+	all->end = NULL;
+	all->verticies = (char **)malloc(sizeof(char*) * count_vert);
+	all->links = (char **)malloc(sizeof(char*) * (count_links * 2));
+	all->vert = count_vert;
+	all->link = count_links;
+}
+

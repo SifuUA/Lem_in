@@ -38,3 +38,37 @@ int		find(char **str, char *c)
 	}
 	return (0);
 }
+
+int		count_links(char **str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
+			len_arr(ft_strsplit(str[i], '-')) == 2)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int		count_vert(char **str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (!ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
+			len_arr(ft_strsplit(str[i], ' ')) == 3)
+			count++;
+		i++;
+	}
+	return (count);
+}
