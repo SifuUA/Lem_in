@@ -18,6 +18,34 @@ t_graph	*creat_graph(int count_v)
 	return (graph);
 }
 
+int 	**creat_matrix(int size)
+{
+	int **matrix;
+	int i;
+	int j;
+
+	i = 0;
+	matrix = (int **)malloc(sizeof(int *) * size);
+	while (i < size)
+	{
+		matrix[i] = (int *)malloc(sizeof(int) * size + 1);
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			matrix[i][j] = 0;
+			j++;
+		}
+		matrix[i][j] = '\0';
+		i++;
+	}
+	return (matrix);
+}
+
 t_all	*creat_struct(int count_vert, int count_links)
 {
 	t_all *all;
@@ -30,4 +58,3 @@ t_all	*creat_struct(int count_vert, int count_links)
 	all->vert = count_vert;
 	all->link = count_links;
 }
-

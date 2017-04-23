@@ -59,7 +59,7 @@ void addEdge(struct Graph* graph, int src, int dest)
 	graph->array[src].head = newNode;
 
 	// Since graph is undirected, add an edge from dest to src also
-	newNode = newAdjListNode(src);
+		newNode = newAdjListNode(src);
 	newNode->next = graph->array[dest].head;
 	graph->array[dest].head = newNode;
 }
@@ -89,11 +89,12 @@ int main()
 	struct Graph* graph = createGraph(V);
 	addEdge(graph, 0, 1);
 	addEdge(graph, 0, 4);
-	addEdge(graph, 1, 2);
-	addEdge(graph, 1, 3);
 	addEdge(graph, 1, 4);
 	addEdge(graph, 2, 3);
 	addEdge(graph, 3, 4);
+	addEdge(graph, 1, 2);
+	addEdge(graph, 1, 3);
+
 
 	// print the adjacency list representation of the above graph
 	printGraph(graph);
