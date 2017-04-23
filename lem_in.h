@@ -34,10 +34,11 @@ typedef struct 			s_all
 	int 				flag;
 }						t_all;
 
-void	fill_all(t_all *all, char **str);
-int		len_arr(char **arr);
-void 	free_arr(char **arr);
-void 	check(t_all *all);
-int		find(char **str, char *c);
+void					fill_all(t_all *all, char **str);
+int						len_arr(char **arr);
+void 					free_arr(char **arr);
+void 					check(t_all *all);
+int						find(char **str, char *c);
+void 					control_ch(int flag, char *str);
 
 #endif
