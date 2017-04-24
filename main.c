@@ -2,6 +2,28 @@
 #include <sys/fcntl.h>
 #include "lem_in.h"
 
+void	print_graph(t_graph *graph)
+{
+	int i;
+	t_node *node;
+
+	i = 0;
+	while (i < graph->count_vert)
+	{
+		node = graph->array[i].head;
+		ft_putstr("\n Adjency list:\n");
+		ft_putstr(node->begin);
+		while (node)
+		{
+			ft_putstr(" -> ");
+			ft_putstr(node->dest);
+			node = node->next;
+		}
+		ft_putstr("\n");
+		i++;
+	}
+}
+
 int		find_index(t_head *arr, char *str)
 {
 	char *p;
@@ -18,13 +40,15 @@ int		find_index(t_head *arr, char *str)
 	{
 		if (ft_strcmp(p, str) == 0)
 			return (i);
-		if (arr[i].head->next)
-			p = arr[i].head->next->begin;
+		if (arr[i + 1].head)
+			p = arr[i + 1].head->begin;
 		else
 		{
+			p = NULL;
 			i++;
-			flag = 1;
-			break ;
+			continue;
+			//flag = 1;
+			//break ;
 		}
 		flag = 1;
 		i++;
@@ -54,9 +78,10 @@ void	add_new(t_graph *graph, char *src, char *dest)
 	node->next = graph->array[index].head;
 	graph->array[index].head = node;
 
-	/*node = add_node(dest, src);
+	node = add_node(dest, src);
 	index = find_index(graph->array, dest);
-	graph->array[index].head = node;*/
+	node->next = graph->array[index].head;
+	graph->array[index].head = node;
 
 }
 
@@ -103,7 +128,7 @@ int		main(int argc, char **argv)
 
 	graph = creat_graph(count_vert(save));
 	fill_graph(graph, all, count_vert(save));
-
+	print_graph(graph);
 
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
