@@ -122,7 +122,7 @@ int		main(int argc, char **argv)
 	fill_all(all, save);
 	check(all);
 	//визуализация
-	ft_arr_putstr(all->links);
+	//ft_arr_putstr(all->links);
 	ft_putstr("***\n");
 	ft_arr_putstr(all->verticies);
 	//edn
