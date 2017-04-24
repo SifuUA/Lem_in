@@ -92,10 +92,11 @@ void 	fill_graph(t_graph *graph, t_all *all, int count)
 
 	i = 0;
 	j = 0;
-	while (i < count)
+	while (j < count)
 	{
 		add_new(graph, all->links[i], all->links[i + 1]);
 		i += 2;
+		j++;
 	}
 }
 
@@ -127,7 +128,7 @@ int		main(int argc, char **argv)
 	//edn
 
 	graph = creat_graph(count_vert(save));
-	fill_graph(graph, all, count_vert(save));
+	fill_graph(graph, all, count_links(save));
 	print_graph(graph);
 
 	//matrix = creat_matrix(count_vert(save));
