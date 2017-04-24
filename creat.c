@@ -54,7 +54,8 @@ t_all	*creat_struct(int count_vert, int count_links)
 	all->start = NULL;
 	all->end = NULL;
 	all->verticies = (char **)malloc(sizeof(char*) * count_vert);
-	all->links = (char **)malloc(sizeof(char*) * (count_links * 2));
+	all->links = (char **)malloc(sizeof(char*) * (count_links * 2) + 1);
+	all->links[count_links] = NULL;
 	all->vert = count_vert;
 	all->link = count_links;
 	return (all);

@@ -46,6 +46,8 @@ int						count_links(char **str);
 int						count_vert(char **str);
 t_graph					*creat_graph(int count_v);
 t_all					*creat_struct(int count_vert, int count_links);
-int 					**creat_matrix(int size);
-void 					fill_matrix(int **matrix, t_all *all, int size);
+//int 					**creat_matrix(int size);
+//void 					fill_matrix(int **matrix, t_all *all, int size);
+void 					fill_graph(t_graph *graph, t_all *all, int count);
+void					print_graph(t_graph *graph);
 #endif
