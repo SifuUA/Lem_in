@@ -2,5 +2,5 @@
 
 void	recur(t_all *all, t_gar		)
 {
-
+asdasdasd
 }
