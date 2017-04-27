@@ -46,8 +46,9 @@ void	rec_f(t_all *all, t_graph *graph, int *res, char *dest, char *begin)
 	all->i++;
 	while (node)
 	{
-		node->mark = 1;
-		node = graph->array[find_index(graph->array, begin)].head;
+		//node->mark = 1;
+		t_node *tmp = graph->array[find_index(graph->array, node->begin)].head;
+		node = find_node(graph, tmp->dest, tmp->begin);
 		rec_f(all, graph, res, node->dest, node->begin);
 		node = node->next;
 	}
