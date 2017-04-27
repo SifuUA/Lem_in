@@ -35,6 +35,8 @@ typedef struct 			s_all
 	int					link;
 	long int			ants;
 	int 				flag;
+	char 				**res;
+	int 				i;
 }						t_all;
 
 void					fill_all(t_all *all, char **str);
@@ -42,6 +44,7 @@ int						len_arr(char **arr);
 void 					free_arr(char **arr);
 void 					check(t_all *all);
 int						find(char **str, char *c);
+int						find_index(t_head *arr, char *str);
 void 					control_ch(int flag, char *str);
 int						count_links(char **str);
 int						count_vert(char **str);
@@ -51,5 +54,5 @@ t_all					*creat_struct(int count_vert, int count_links);
 //void 					fill_matrix(int **matrix, t_all *all, int size);
 void 					fill_graph(t_graph *graph, t_all *all, int count);
 void					print_graph(t_graph *graph);
-void	rec_f(t_all *all, t_graph *graph, t_head *array);
+void	rec_f(t_all *all, t_graph *graph, int *res, int move, char *start);
 #endif

@@ -32,7 +32,11 @@ int		main(int argc, char **argv)
 	graph = creat_graph(count_vert(save));
 	fill_graph(graph, all, count_links(save));
 	print_graph(graph);
-	rec_f(all, graph, graph->array);
+
+	int *arr = malloc(sizeof(int) * graph->count_vert);
+	int move;
+
+	rec_f(all, graph, arr, move, all->start);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
 

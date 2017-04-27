@@ -62,6 +62,7 @@ t_node 	*add_node(char *begin, char *dest)
 	node->next = NULL;
 	node->dest = dest;
 	node->begin = begin;
+	node->mark = 0;
 	return (node);
 }
 
