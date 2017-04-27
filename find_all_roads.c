@@ -14,28 +14,48 @@ int 	check_res(char **res, char *str)
 	return (0);
 }
 
-void	rec_f(t_all *all, t_graph *graph, int *res, char *start)
+struct s_node * find_node(t_graph *graph, char *dest, char *begin)
+{
+	int i;
+	t_node *tmp;
+
+	i = 0;
+	while (i < graph->count_vert)
+	{
+		tmp = graph->array[i].head;
+		while (tmp)
+		{
+			if (ft_strcmp(graph->array[i].head->dest, dest) == 0
+				&& ft_strcmp(graph->array[i].head->dest, begin) == 0)
+				return (graph->array[i].head);
+			tmp = tmp->next;
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+void	rec_f(t_all *all, t_graph *graph, int *res, char *start, t_node *nod)
 {
 	t_node *node;
 
-	node = graph->array[find_index(graph->array, start)].head;
-	/*while (node->mark == 1)
-	{
-		if (node->next && !ft_strcmp(node->next->dest, all->start))
-		node = node->next;
-	}*/
+	//node = graph->array[find_index(graph->array, start)].head;
+	node = find_node(graph, start, )
+	nod = node->next;
 	if (check_res(all->res, node->dest))
-		return ;
+	{
+		nod = node->next;
+		return;
+	}
 	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 	all->i++;
 	while (node)
 	{
 		start = node->dest;
 		node->mark = 1;
-		//graph->array[find_index(graph->array, node->dest)].head->mark = 1;
-		rec_f(all, graph, res, start);
-		node = graph->array[find_index(graph->array, start)].head;
+		rec_f(all, graph, res, start, node);
 		node = node->next;
+		node = graph->array[find_index(graph->array, start)].head->next;
 	}
 
 

@@ -35,7 +35,7 @@ int		main(int argc, char **argv)
 
 	int *arr = malloc(sizeof(int) * graph->count_vert);
 
-	rec_f(all, graph, arr, all->start);
+	rec_f(all, graph, arr, all->start, graph->array[find_index(graph->array, all->start)].head);
 	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
