@@ -35,8 +35,11 @@ void 	write_start(char **str, int i, t_all * all)
 		exit(2);
 	}
 	all->start = tmp[0];
+	if (tmp[2][ft_strlen(tmp[2]) - 1] == '\r')
+		tmp[2][ft_strlen(tmp[2]) - 1]  = '\0';
+	all->dest = tmp[2];
 	all->flag = 1;
-	free_arr(tmp);
+	//free_arr(tmp);
 }
 
 void 	write_end(char **str, int i, t_all * all)
