@@ -14,11 +14,16 @@ int 	check_res(char **res, char *str)
 	return (0);
 }
 
-void	rec_f(t_all *all, t_graph *graph, int *res, int move, char *start)
+void	rec_f(t_all *all, t_graph *graph, int *res, char *start)
 {
 	t_node *node;
 
 	node = graph->array[find_index(graph->array, start)].head;
+	/*while (node->mark == 1)
+	{
+		if (node->next && !ft_strcmp(node->next->dest, all->start))
+		node = node->next;
+	}*/
 	if (check_res(all->res, node->dest))
 		return ;
 	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
@@ -27,7 +32,9 @@ void	rec_f(t_all *all, t_graph *graph, int *res, int move, char *start)
 	{
 		start = node->dest;
 		node->mark = 1;
-		rec_f(all, graph, res, move + 1, start);
+		//graph->array[find_index(graph->array, node->dest)].head->mark = 1;
+		rec_f(all, graph, res, start);
+		node = graph->array[find_index(graph->array, start)].head;
 		node = node->next;
 	}
 

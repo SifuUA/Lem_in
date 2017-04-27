@@ -34,9 +34,9 @@ int		main(int argc, char **argv)
 	print_graph(graph);
 
 	int *arr = malloc(sizeof(int) * graph->count_vert);
-	int move;
 
-	rec_f(all, graph, arr, move, all->start);
+	rec_f(all, graph, arr, all->start);
+	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
 
