@@ -38,6 +38,7 @@ typedef struct 			s_all
 	char 				**res;
 	int 				i;
 	char				*dest;
+	int 				j;
 }						t_all;
 
 void					fill_all(t_all *all, char **str);

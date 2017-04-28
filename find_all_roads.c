@@ -58,19 +58,26 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
 
+
+	if (all->j == 0)
+	{
+		all->res[all->i] = start->begin;
+		all->j++;
+	}
 	if (check_res(ft_strsplit(all->res[all->i], ' '), node->dest))
 		return;
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
-		clear_mark(graph);
+		/*clear_mark(graph);
 		start = start->next;
 		node = start;
 		ft_arr_putstr(ft_strsplit(all->res[all->i], ' '));
 		ft_putstr("*****\n");
-		all->i++;
+		all->i++;*/
+		return ;
+		all->res[all->i] = ft_strjoin(all->res[all->i], " ");
+		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 	}
-	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
-	all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 	while (node)
 	{
 		node->mark = 1;
