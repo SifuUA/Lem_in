@@ -70,7 +70,7 @@ int 	get_index(char **str, char *st)
 void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
-	char **st;
+	char **st; 
 	int c;
 
 	c = 0;
