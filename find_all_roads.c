@@ -1,5 +1,27 @@
 #include "lem_in.h"
 
+int 	check_res_mod(char **res, char *str)
+{
+	int i;
+	int j;
+	char **tmp;
+
+	i = 0;
+	j = 0;
+	while (res && res[i])
+	{
+		tmp = ft_strsplit(res[i], ' ');
+		while (tmp[j])
+		{
+			if (ft_strcmp(tmp[j], str) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return(0);
+}
+
 int 	check_res(char **res, char *str)
 {
 	int i;
@@ -79,8 +101,10 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 		all->res[all->i] = start->begin;
 		all->j++;
 	}
-	if (check_res(ft_strsplit(all->res[all->i], ' '), node->dest))
-		return;
+	/*if (check_res(ft_strsplit(all->res[all->i], ' '), node->dest))
+		return;*/
+	if (check_res_mod(all->res, node->dest))
+		return ;
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		st = ft_strsplit(all->res[all->i], ' ');
@@ -93,12 +117,8 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 		}
 		return ;
 	}
-	else
-	{
-
-		all->res[all->i] = ft_strjoin(all->res[all->i], " ");
-		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
-	}
+	all->res[all->i] = ft_strjoin(all->res[all->i], " ");
+	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 	while (node)
 	{
 		node->mark = 1;
