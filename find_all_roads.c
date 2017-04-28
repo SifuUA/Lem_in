@@ -35,11 +35,10 @@ struct s_node * find_node(t_graph *graph, char *dest, char *begin)
 	return (NULL);
 }
 
-void	rec_f(t_all *all, t_graph *graph, int *res, char *dest, char *begin)
+void	rec_f(t_all *all, t_graph *graph, int *res, t_node *node)
 {
-	t_node *node;
+	t_node *tmp;
 
-	node = find_node(graph, dest, begin);
 	if (check_res(all->res, node->dest))
 		return;
 	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
@@ -47,10 +46,18 @@ void	rec_f(t_all *all, t_graph *graph, int *res, char *dest, char *begin)
 	while (node)
 	{
 		//node->mark = 1;
-		t_node *tmp = graph->array[find_index(graph->array, node->begin)].head;
-		node = find_node(graph, tmp->dest, tmp->begin);
-		rec_f(all, graph, res, node->dest, node->begin);
-		node = node->next;
+		if (all->flag != 3)
+			tmp = graph->array[find_index(graph->array, node->dest)].head;
+		else
+		{
+			tmp = node;
+			all->flag = 0;
+		}
+		//node = find_node(graph, tmp->dest, tmp->begin);
+		rec_f(all, graph, res, tmp);
+		node = tmp->next;
+		all->flag = 3;
+		//node = node->next;
 	}
 
 
