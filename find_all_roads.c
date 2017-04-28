@@ -81,22 +81,24 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 	}
 	if (check_res(ft_strsplit(all->res[all->i], ' '), node->dest))
 		return;
-
-
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		st = ft_strsplit(all->res[all->i], ' ');
 		all->i++;
-		while (c < get_index(st, node->begin))
+		while (c <= get_index(st, node->begin))
 		{
 			all->res[all->i] = ft_strjoin(all->res[all->i], st[c]);
+			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 			c++;
 		}
 		return ;
 	}
+	else
+	{
 
-	all->res[all->i] = ft_strjoin(all->res[all->i], " ");
-	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
+		all->res[all->i] = ft_strjoin(all->res[all->i], " ");
+		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
+	}
 	while (node)
 	{
 		node->mark = 1;
