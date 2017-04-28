@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 	int *arr = malloc(sizeof(int) * graph->count_vert);
 	t_node *node_start = find_node(graph, all->dest, all->start);
 
-	rec_f(all, graph, arr, node_start);
+	rec_f(all, graph, node_start, node_start);
 	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
