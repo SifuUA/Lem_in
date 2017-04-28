@@ -43,9 +43,14 @@ void	rec_f(t_all *all, t_graph *graph, int *res, t_node *node)
 		return;
 	all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 	all->i++;
+	if (ft_strcmp(node->dest, all->end) == 0)
+	{
+		ft_arr_putstr(all->res);
+		exit(777);
+	}
 	while (node)
 	{
-		//node->mark = 1;
+		node->mark = 1;
 		if (all->flag != 3)
 			tmp = graph->array[find_index(graph->array, node->dest)].head;
 		else
@@ -53,11 +58,9 @@ void	rec_f(t_all *all, t_graph *graph, int *res, t_node *node)
 			tmp = node;
 			all->flag = 0;
 		}
-		//node = find_node(graph, tmp->dest, tmp->begin);
 		rec_f(all, graph, res, tmp);
 		node = tmp->next;
 		all->flag = 3;
-		//node = node->next;
 	}
 
 
