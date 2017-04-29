@@ -129,11 +129,12 @@ char	*get_to(char *str, char *to)
 	return (res);
 }
 
-void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
+void    rec_f(t_all *all, t_graph *graph, t_node *node)
 {
 	t_node *tmp;
 
-	if (all->res[all->i] && check_res(all->res[all->i], node->dest) && ft_strcmp(node->dest, all->end) != 0)
+	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
+			ft_strcmp(node->dest, all->end) != 0)
 		return ;
 	else
 	{
@@ -142,7 +143,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 			all->i++;
 			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
 		}
-			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
+		all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 		all->j = 0;
 	}
@@ -159,10 +160,8 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 		{
 			tmp = node;
 			all->flag = 0;
-			//if (all->j == 7 && ft_strstr(all->res[all->i], node->dest))
-			//	del_last(all->res[all->i]);
 		}
-		rec_f(all, graph, tmp, start);
+		rec_f(all, graph, tmp);
 		node = tmp->next;
 		all->flag = 3;
 	}
