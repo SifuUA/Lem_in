@@ -28,7 +28,9 @@ int 	check_res(char *res, char *str)
 	char **tmp;
 
 	i = 0;
-	tmp = ft_strsplit(res, ' ');
+	tmp = NULL;
+	if (res)
+		tmp = ft_strsplit(res, ' ');
 
 	while (tmp && tmp[i])
 	{
@@ -106,40 +108,60 @@ void	del_last(char *str)
 	}
 }
 
+char	*get_to(char *str, char *to)
+{
+	char	*hz;
+	char 	**tmp;
+	char 	*res;
+	int 	i;
+
+	i = 0;
+	res = NULL;
+	tmp = ft_strsplit(str, ' ');
+	while (tmp[i] && ft_strcmp(tmp[i], to) != 0)
+	{
+		hz = ft_strjoin(res, tmp[i]);
+		res = ft_strjoin(hz, " ");
+		i++;
+	}
+	hz = ft_strjoin(res, tmp[i]);
+	res = ft_strjoin(hz, " ");
+	return (res);
+}
+
 void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
 
 	if (check_res(all->res[all->i], node->dest) && ft_strcmp(node->dest, all->end) != 0)
-		return ;// якщо в моєму 2вимірному масиві є така кімната і це не кінець то return
+		return ;
 	else
 	{
-		all->res[all->i] = ft_strjoin(all->res[all->i], " ");// тут записую через ' ' кімнати в i-ту строку
-		// 2вимірного масива
+		if (all->j == 7)
+			all->res[all->i] = get_to(all->res[all->i], node->begin);
+			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
+		all->j = 0;
+
 	}
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		all->i++;
 		all->j = 7;
-		all->res[all->i] = ft_strdup(all->res[all->i - 1]);
-		return ;//якщо дійшов до кінця повертаюсь на крок назад
+		return ;
 	}
 	while (node)
 	{
-		if (all->flag != 3)// перевірка чи рекурсія повертається назад
-			tmp = graph->array[find_index(graph->array, node->dest)].head;// так я знаходжу саме той вузол з мого масива
-			// листів на який вказує лінк
+		if (all->flag != 3)
+			tmp = graph->array[find_index(graph->array, node->dest)].head;
 		else
 		{
 			tmp = node;
 			all->flag = 0;
-			if (all->j == 7 && ft_strstr(all->res[all->i], node->dest))
-			{
-				del_last(all->res[all->i]);// видаленння останньоі кімнати з строки
-			}
+			//if (all->j == 7 && ft_strstr(all->res[all->i], node->dest))
+			//	del_last(all->res[all->i]);
 		}
-		rec_f(all, graph, tmp, start);// рекурсія
+		rec_f(all, graph, tmp, start);
 		node = tmp->next;
 		all->flag = 3;
 	}
