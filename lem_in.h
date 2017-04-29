@@ -38,7 +38,7 @@ typedef struct 			s_all
 	long int			ants;
 	int 				flag;
 	char 				**res;
-	int 				*res2;
+	long int 				*res2;
 	int 				i;
 	char				*dest;
 	int 				j;
