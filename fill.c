@@ -19,6 +19,8 @@ void 	write_link(char *str, t_all *all)
 	all->links[j++] = tmp[0];
 	if (tmp[1][ft_strlen(tmp[1]) - 1] == '\r')
 		tmp[1][ft_strlen(tmp[1]) - 1]  = '\0';
+	if (ft_strcmp(all->links[j- 1], all->start) == 0)
+		all->dest = tmp[1];
 	all->links[j++] = tmp[1];
 	all->flag = 1;
 	//free_arr(tmp);
@@ -37,7 +39,6 @@ void 	write_start(char **str, int i, t_all * all)
 	all->start = tmp[0];
 	if (tmp[2][ft_strlen(tmp[2]) - 1] == '\r')
 		tmp[2][ft_strlen(tmp[2]) - 1]  = '\0';
-	all->dest = tmp[2];
 	all->flag = 1;
 	//free_arr(tmp);
 }

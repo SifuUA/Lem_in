@@ -75,11 +75,13 @@ void	add_new(t_graph *graph, char *src, char *dest)
 	node = add_node(src, dest);
 	index = find_index(graph->array, src);
 	node->next = graph->array[index].head;
+	node->index = graph->count_nodes++;
 	graph->array[index].head = node;
 
 	node = add_node(dest, src);
 	index = find_index(graph->array, dest);
 	node->next = graph->array[index].head;
+	node->index = graph->count_nodes++;
 	graph->array[index].head = node;
 
 }

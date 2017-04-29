@@ -33,7 +33,7 @@ int		main(int argc, char **argv)
 	fill_graph(graph, all, count_links(save));
 	print_graph(graph);
 
-	int *arr = malloc(sizeof(int) * graph->count_vert);
+	all->res2 = malloc(sizeof(int) * graph->count_nodes);
 	t_node *node_start = find_node(graph, all->dest, all->start);
 
 	rec_f(all, graph, node_start, node_start);

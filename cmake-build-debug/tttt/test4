@@ -1,0 +1,77 @@
+#room names not numbers
+100
+##start
+aa-aaaaaa 2 2
+bbbbbbbb 25 8
+ccccc-ccc 16 7
+d-dddddd-d 4 8
+##end
+eeeeeeee 16 3
+aa-aaaaaa-bbbbbbbb
+aa-aaaaaa-ccccc-ccc
+bbbbbbbb-ccccc-ccc
+bbbbbbbb-d-dddddd-d
+bbbbbbbb-eeeeeeee
+ccccc-ccc-bbbbbbbb
+ccccc-ccc-d-dddddd-d
+d-dddddd-d-eeeeeeee
+
+Best possible paths
+----------------------------------
+[39maa-aaaaaa->[0m[39mbbbbbbbb->[0m[39meeeeeeee[0m
+----------------------------------
+[32maa-aaaaaa->[0m[32mccccc-ccc->[0m[32md-dddddd-d->[0m[32meeeeeeee[0m
+----------------------------------
+
+[39mL1->bbbbbbbb [0m[32mL2->ccccc-ccc [0m
+[39mL1->eeeeeeee [0m[39mL3->bbbbbbbb [0m[32mL2->d-dddddd-d [0m[32mL4->ccccc-ccc [0m
+[39mL3->eeeeeeee [0m[39mL5->bbbbbbbb [0m[32mL2->eeeeeeee [0m[32mL4->d-dddddd-d [0m[32mL6->ccccc-ccc [0m
+[39mL5->eeeeeeee [0m[39mL7->bbbbbbbb [0m[32mL4->eeeeeeee [0m[32mL6->d-dddddd-d [0m[32mL8->ccccc-ccc [0m
+[39mL7->eeeeeeee [0m[39mL9->bbbbbbbb [0m[32mL6->eeeeeeee [0m[32mL8->d-dddddd-d [0m[32mL10->ccccc-ccc [0m
+[39mL9->eeeeeeee [0m[39mL11->bbbbbbbb [0m[32mL8->eeeeeeee [0m[32mL10->d-dddddd-d [0m[32mL12->ccccc-ccc [0m
+[39mL11->eeeeeeee [0m[39mL13->bbbbbbbb [0m[32mL10->eeeeeeee [0m[32mL12->d-dddddd-d [0m[32mL14->ccccc-ccc [0m
+[39mL13->eeeeeeee [0m[39mL15->bbbbbbbb [0m[32mL12->eeeeeeee [0m[32mL14->d-dddddd-d [0m[32mL16->ccccc-ccc [0m
+[39mL15->eeeeeeee [0m[39mL17->bbbbbbbb [0m[32mL14->eeeeeeee [0m[32mL16->d-dddddd-d [0m[32mL18->ccccc-ccc [0m
+[39mL17->eeeeeeee [0m[39mL19->bbbbbbbb [0m[32mL16->eeeeeeee [0m[32mL18->d-dddddd-d [0m[32mL20->ccccc-ccc [0m
+[39mL19->eeeeeeee [0m[39mL21->bbbbbbbb [0m[32mL18->eeeeeeee [0m[32mL20->d-dddddd-d [0m[32mL22->ccccc-ccc [0m
+[39mL21->eeeeeeee [0m[39mL23->bbbbbbbb [0m[32mL20->eeeeeeee [0m[32mL22->d-dddddd-d [0m[32mL24->ccccc-ccc [0m
+[39mL23->eeeeeeee [0m[39mL25->bbbbbbbb [0m[32mL22->eeeeeeee [0m[32mL24->d-dddddd-d [0m[32mL26->ccccc-ccc [0m
+[39mL25->eeeeeeee [0m[39mL27->bbbbbbbb [0m[32mL24->eeeeeeee [0m[32mL26->d-dddddd-d [0m[32mL28->ccccc-ccc [0m
+[39mL27->eeeeeeee [0m[39mL29->bbbbbbbb [0m[32mL26->eeeeeeee [0m[32mL28->d-dddddd-d [0m[32mL30->ccccc-ccc [0m
+[39mL29->eeeeeeee [0m[39mL31->bbbbbbbb [0m[32mL28->eeeeeeee [0m[32mL30->d-dddddd-d [0m[32mL32->ccccc-ccc [0m
+[39mL31->eeeeeeee [0m[39mL33->bbbbbbbb [0m[32mL30->eeeeeeee [0m[32mL32->d-dddddd-d [0m[32mL34->ccccc-ccc [0m
+[39mL33->eeeeeeee [0m[39mL35->bbbbbbbb [0m[32mL32->eeeeeeee [0m[32mL34->d-dddddd-d [0m[32mL36->ccccc-ccc [0m
+[39mL35->eeeeeeee [0m[39mL37->bbbbbbbb [0m[32mL34->eeeeeeee [0m[32mL36->d-dddddd-d [0m[32mL38->ccccc-ccc [0m
+[39mL37->eeeeeeee [0m[39mL39->bbbbbbbb [0m[32mL36->eeeeeeee [0m[32mL38->d-dddddd-d [0m[32mL40->ccccc-ccc [0m
+[39mL39->eeeeeeee [0m[39mL41->bbbbbbbb [0m[32mL38->eeeeeeee [0m[32mL40->d-dddddd-d [0m[32mL42->ccccc-ccc [0m
+[39mL41->eeeeeeee [0m[39mL43->bbbbbbbb [0m[32mL40->eeeeeeee [0m[32mL42->d-dddddd-d [0m[32mL44->ccccc-ccc [0m
+[39mL43->eeeeeeee [0m[39mL45->bbbbbbbb [0m[32mL42->eeeeeeee [0m[32mL44->d-dddddd-d [0m[32mL46->ccccc-ccc [0m
+[39mL45->eeeeeeee [0m[39mL47->bbbbbbbb [0m[32mL44->eeeeeeee [0m[32mL46->d-dddddd-d [0m[32mL48->ccccc-ccc [0m
+[39mL47->eeeeeeee [0m[39mL49->bbbbbbbb [0m[32mL46->eeeeeeee [0m[32mL48->d-dddddd-d [0m[32mL50->ccccc-ccc [0m
+[39mL49->eeeeeeee [0m[39mL51->bbbbbbbb [0m[32mL48->eeeeeeee [0m[32mL50->d-dddddd-d [0m[32mL52->ccccc-ccc [0m
+[39mL51->eeeeeeee [0m[39mL53->bbbbbbbb [0m[32mL50->eeeeeeee [0m[32mL52->d-dddddd-d [0m[32mL54->ccccc-ccc [0m
+[39mL53->eeeeeeee [0m[39mL55->bbbbbbbb [0m[32mL52->eeeeeeee [0m[32mL54->d-dddddd-d [0m[32mL56->ccccc-ccc [0m
+[39mL55->eeeeeeee [0m[39mL57->bbbbbbbb [0m[32mL54->eeeeeeee [0m[32mL56->d-dddddd-d [0m[32mL58->ccccc-ccc [0m
+[39mL57->eeeeeeee [0m[39mL59->bbbbbbbb [0m[32mL56->eeeeeeee [0m[32mL58->d-dddddd-d [0m[32mL60->ccccc-ccc [0m
+[39mL59->eeeeeeee [0m[39mL61->bbbbbbbb [0m[32mL58->eeeeeeee [0m[32mL60->d-dddddd-d [0m[32mL62->ccccc-ccc [0m
+[39mL61->eeeeeeee [0m[39mL63->bbbbbbbb [0m[32mL60->eeeeeeee [0m[32mL62->d-dddddd-d [0m[32mL64->ccccc-ccc [0m
+[39mL63->eeeeeeee [0m[39mL65->bbbbbbbb [0m[32mL62->eeeeeeee [0m[32mL64->d-dddddd-d [0m[32mL66->ccccc-ccc [0m
+[39mL65->eeeeeeee [0m[39mL67->bbbbbbbb [0m[32mL64->eeeeeeee [0m[32mL66->d-dddddd-d [0m[32mL68->ccccc-ccc [0m
+[39mL67->eeeeeeee [0m[39mL69->bbbbbbbb [0m[32mL66->eeeeeeee [0m[32mL68->d-dddddd-d [0m[32mL70->ccccc-ccc [0m
+[39mL69->eeeeeeee [0m[39mL71->bbbbbbbb [0m[32mL68->eeeeeeee [0m[32mL70->d-dddddd-d [0m[32mL72->ccccc-ccc [0m
+[39mL71->eeeeeeee [0m[39mL73->bbbbbbbb [0m[32mL70->eeeeeeee [0m[32mL72->d-dddddd-d [0m[32mL74->ccccc-ccc [0m
+[39mL73->eeeeeeee [0m[39mL75->bbbbbbbb [0m[32mL72->eeeeeeee [0m[32mL74->d-dddddd-d [0m[32mL76->ccccc-ccc [0m
+[39mL75->eeeeeeee [0m[39mL77->bbbbbbbb [0m[32mL74->eeeeeeee [0m[32mL76->d-dddddd-d [0m[32mL78->ccccc-ccc [0m
+[39mL77->eeeeeeee [0m[39mL79->bbbbbbbb [0m[32mL76->eeeeeeee [0m[32mL78->d-dddddd-d [0m[32mL80->ccccc-ccc [0m
+[39mL79->eeeeeeee [0m[39mL81->bbbbbbbb [0m[32mL78->eeeeeeee [0m[32mL80->d-dddddd-d [0m[32mL82->ccccc-ccc [0m
+[39mL81->eeeeeeee [0m[39mL83->bbbbbbbb [0m[32mL80->eeeeeeee [0m[32mL82->d-dddddd-d [0m[32mL84->ccccc-ccc [0m
+[39mL83->eeeeeeee [0m[39mL85->bbbbbbbb [0m[32mL82->eeeeeeee [0m[32mL84->d-dddddd-d [0m[32mL86->ccccc-ccc [0m
+[39mL85->eeeeeeee [0m[39mL87->bbbbbbbb [0m[32mL84->eeeeeeee [0m[32mL86->d-dddddd-d [0m[32mL88->ccccc-ccc [0m
+[39mL87->eeeeeeee [0m[39mL89->bbbbbbbb [0m[32mL86->eeeeeeee [0m[32mL88->d-dddddd-d [0m[32mL90->ccccc-ccc [0m
+[39mL89->eeeeeeee [0m[39mL91->bbbbbbbb [0m[32mL88->eeeeeeee [0m[32mL90->d-dddddd-d [0m[32mL92->ccccc-ccc [0m
+[39mL91->eeeeeeee [0m[39mL93->bbbbbbbb [0m[32mL90->eeeeeeee [0m[32mL92->d-dddddd-d [0m[32mL94->ccccc-ccc [0m
+[39mL93->eeeeeeee [0m[39mL95->bbbbbbbb [0m[32mL92->eeeeeeee [0m[32mL94->d-dddddd-d [0m[32mL96->ccccc-ccc [0m
+[39mL95->eeeeeeee [0m[39mL97->bbbbbbbb [0m[32mL94->eeeeeeee [0m[32mL96->d-dddddd-d [0m[32mL98->ccccc-ccc [0m
+[39mL97->eeeeeeee [0m[39mL99->bbbbbbbb [0m[32mL96->eeeeeeee [0m[32mL98->d-dddddd-d [0m
+[39mL99->eeeeeeee [0m[39mL100->bbbbbbbb [0m[32mL98->eeeeeeee [0m
+[39mL100->eeeeeeee [0m

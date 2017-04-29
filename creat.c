@@ -9,6 +9,7 @@ t_graph	*creat_graph(int count_v)
 	i = 0;
 	graph = (t_graph *)malloc(sizeof(t_graph));
 	graph->count_vert = count_v;
+	graph->count_nodes = 0;
 	graph->array = (t_head *)malloc(sizeof(t_head) * count_v);
 	while (i < count_v)
 	{
@@ -60,5 +61,6 @@ t_all	*creat_struct(int count_vert, int count_links)
 	all->link = count_links;
 	all->res = (char **)malloc(sizeof(char*) * count_vert);
 	all->i = 0;
+	all->j = 0;
 	return (all);
 }

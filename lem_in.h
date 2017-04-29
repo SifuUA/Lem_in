@@ -8,6 +8,7 @@
 typedef struct		s_node
 {
 	int 			mark;
+	long int		index;
 	char 			*dest;
 	char 			*begin;
 	struct s_node	*next;
@@ -22,6 +23,7 @@ typedef struct			s_head
 typedef struct 			s_graph
 {
 	int					count_vert;
+	long int			count_nodes;
 	struct s_head	 	*array;
 }						t_graph;
 
@@ -36,6 +38,7 @@ typedef struct 			s_all
 	long int			ants;
 	int 				flag;
 	char 				**res;
+	int 				*res2;
 	int 				i;
 	char				*dest;
 	int 				j;
