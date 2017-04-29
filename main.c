@@ -35,6 +35,7 @@ int		main(int argc, char **argv)
 
 	int *arr = malloc(sizeof(int) * graph->count_vert);
 	t_node *node_start = find_node(graph, all->dest, all->start);
+	all->res[0] = node_start->begin;
 
 	rec_f(all, graph, node_start, node_start);
 	ft_arr_putstr(all->res);
@@ -43,3 +44,26 @@ int		main(int argc, char **argv)
 
 	close(fd);
 }
+
+/*
+int		start_rec(int step, int *path, t_rooms *from, t_info *info)
+{
+	t_str	*p;
+
+	p = from->n_room;
+	if (already_been_hear(path, step, from->nbr) == 1)
+		return (0);
+	path[step] = from->nbr;
+	if (from->nbr == INT_MAX)
+	{
+		ft_lstadd(&(info->paths), ft_lstnew(path, sizeof(int) * (step + 1)));
+		return (1);
+	}
+	while (p)
+	{
+		start_rec(step + 1, path, (t_rooms*)(p->str), info);
+		p = p->next;
+	}
+	return (0);
+}
+ */
