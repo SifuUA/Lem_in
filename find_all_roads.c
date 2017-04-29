@@ -133,20 +133,21 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
 
-	if (check_res(all->res[all->i], node->dest) && ft_strcmp(node->dest, all->end) != 0)
+	if (all->res[all->i] && check_res(all->res[all->i], node->dest) && ft_strcmp(node->dest, all->end) != 0)
 		return ;
 	else
 	{
 		if (all->j == 7)
-			all->res[all->i] = get_to(all->res[all->i], node->begin);
+		{
+			all->i++;
+			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
+		}
 			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 		all->j = 0;
-
 	}
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
-		all->i++;
 		all->j = 7;
 		return ;
 	}
