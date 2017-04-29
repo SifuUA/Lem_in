@@ -150,6 +150,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		all->j = 7;
+
 		return ;
 	}
 	while (node)
