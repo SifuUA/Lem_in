@@ -60,5 +60,6 @@ t_all	*creat_struct(int count_vert, int count_links)
 	all->link = count_links;
 	all->res = (char **)malloc(sizeof(char*) * count_links);
 	all->i = 0;
+	all->r_rec = 0;
 	return (all);
 }

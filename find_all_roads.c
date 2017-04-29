@@ -132,25 +132,25 @@ char	*get_to(char *str, char *to)
 void    rec_f(t_all *all, t_graph *graph, t_node *node)
 {
 	t_node *tmp;
-
+	if (ft_strcmp(node->dest, "1") == 0 && ft_strcmp(node->begin, "2"))
+		ft_putstr("AAAAA\n");
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 			ft_strcmp(node->dest, all->end) != 0)
 		return ;
 	else
 	{
-		if (all->j == 7)
+		if (all->r_rec == 1)
 		{
 			all->i++;
 			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
 		}
 		all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
-		all->j = 0;
+		all->r_rec = 0;
 	}
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
-		all->j = 7;
-
+		all->r_rec = 1;
 		return ;
 	}
 	while (node)
