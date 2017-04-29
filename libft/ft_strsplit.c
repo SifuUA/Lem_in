@@ -19,7 +19,7 @@ static const char	*split_start(const char *s, char c)
 	if (s)
 	{
 		tmp = s;
-		while (*tmp == c)
+		while (*tmp && *tmp == c)
 			tmp++;
 		return (tmp);
 	}
