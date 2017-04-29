@@ -106,24 +106,17 @@ void	del_last(char *str)
 	}
 }
 
-void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
+void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
 
-	if (node->mark == 1)
-			return ;// якщо в моєму 2вимірному масиві є така кімната і це не кінець то return
+	if (check_res(all->res[all->i], node->dest) && ft_strcmp(node->dest, all->end) != 0)
+		return ;// якщо в моєму 2вимірному масиві є така кімната і це не кінець то return
 	else
 	{
-		all->res[all->i] = ft_strjoin(all->res[all->i], " ");// тут записую через ' ' кімнати в i-ту строку 2вимірного масива
+		all->res[all->i] = ft_strjoin(all->res[all->i], " ");// тут записую через ' ' кімнати в i-ту строку
+		// 2вимірного масива
 		all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
-		all->j = 0;
-		node->mark = 1;
-		tmp = find_node(graph, node->begin, node->dest);
-		while (ft_strcmp(tmp->dest, node->begin) != 0 || ft_strcmp(tmp->begin, node->dest))
-			tmp= tmp->next;
-		tmp->mark = 1;
-
-
 	}
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
@@ -134,11 +127,9 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 	}
 	while (node)
 	{
-		//node->mark = 1;
 		if (all->flag != 3)// перевірка чи рекурсія повертається назад
-		{
-			tmp = graph->array[find_index(graph->array, node->dest)].head;// так я знаходжу саме той вузол з мого масива листів на який вказує лінк
-		}
+			tmp = graph->array[find_index(graph->array, node->dest)].head;// так я знаходжу саме той вузол з мого масива
+			// листів на який вказує лінк
 		else
 		{
 			tmp = node;
