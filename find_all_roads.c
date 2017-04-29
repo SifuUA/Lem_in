@@ -101,10 +101,15 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 		all->res[all->i] = start->begin;
 		all->j++;
 	}
+<<<<<<< Updated upstream
 	/*if (check_res(ft_strsplit(all->res[all->i], ' '), node->dest))
 		return;*/
 	if (check_res_mod(all->res, node->dest))
 		return ;
+=======
+	if (check_res(ft_strsplit(all->res[all->i], ' '), node->dest))
+		return;
+>>>>>>> Stashed changes
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		st = ft_strsplit(all->res[all->i], ' ');
