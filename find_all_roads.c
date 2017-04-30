@@ -170,9 +170,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 	while (node)
 	{
 		if (all->flag != 3)
-		{
 			tmp = graph->array[find_index(graph->array, node->dest)].head;
-		}
 		else
 		{
 			tmp = node;
@@ -182,12 +180,19 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 		rec_f(all, graph, tmp, start);
 		node = tmp->next;
 		all->flag = 3;
-		if (if_all_mark(graph, all->ss) && node == NULL && ft_strcmp(tmp->begin, all->ss->begin) == 0)
+		if (if_all_mark(graph, all->ss) && node == NULL &&
+				ft_strcmp(tmp->begin, all->ss->begin) == 0 &&
+				start->next)
 		{
 			node = start->next;
 			all->flag = 0;
 			all->i++;
 			all->r_rec = 0;
+			all->res[all->i] = start->begin;
+			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
+			all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
+			start = start->next;
+			rec_f(all, graph, tmp, start);
 		}
 	}
 }

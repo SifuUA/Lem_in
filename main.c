@@ -37,6 +37,7 @@ int		main(int argc, char **argv)
 	t_node *node_start = find_node(graph, all->dest, all->start);
 	all->res[0] = node_start->begin;
 	rec_f(all, graph, node_start, node_start);
+	all->res[all->i] = NULL;
 	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
@@ -45,33 +46,9 @@ int		main(int argc, char **argv)
 }
 
 /*
-int		start_rec(int step, int *path, t_rooms *from, t_info *info)
-{
-	t_str	*p;
-
-	p = from->n_room;
-	if (already_been_hear(path, step, from->nbr) == 1)
-		return (0);
-	path[step] = from->nbr;
-	if (from->nbr == INT_MAX)
-	{
-		ft_lstadd(&(info->paths), ft_lstnew(path, sizeof(int) * (step + 1)));
-		return (1);
-	}
-	while (p)
-	{
-		start_rec(step + 1, path, (t_rooms*)(p->str), info);
-		p = p->next;
-	}
-	return (0);
-}
 
 
-
-
-
-
- 1 2 7 4 3 5 6 0
+1 2 7 4 3 5 6 0
 1 2 7 4  0
 1 2 7  6 5 3 4 0
 1 2 7 6  0
@@ -81,4 +58,9 @@ int		start_rec(int step, int *path, t_rooms *from, t_info *info)
 1 2 5 6  0
 1 2 5  3 4 7 6 0
 1 2 5 3 4  0
+1 3 5 6 7 4 2 0
+1 3 5 6  0
+1 3 5  2 7 4 0
+1 3 5 2 7  6 0
+1 3 5 2  4 7 6 0
  */
