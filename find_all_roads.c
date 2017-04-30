@@ -141,6 +141,24 @@ int 	if_all_mark(t_graph *graph, t_node *node)
 	return (1);
 }
 
+int 	check_end(char *str, char *end, t_graph *graph)
+{
+	char **tmp;
+	int len;
+	t_node *node;
+
+	tmp = ft_strsplit(str, ' ');
+	len = len_arr(tmp) - 2;
+	node = graph->array[find_index(graph->array, tmp[len])].head;
+	while (node)
+	{
+		if (ft_strcmp(node->dest, end) == 0)
+			return (1);
+		node = node->next;
+	}
+	return (0);
+}
+
 void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
@@ -164,6 +182,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 	}
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
+
 		all->r_rec = 1;
 		return ;
 	}
@@ -192,7 +211,6 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 			all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 			start = start->next;
-			rec_f(all, graph, tmp, start);
 		}
 	}
 }

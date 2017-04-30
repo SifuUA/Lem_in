@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
 
 	graph = creat_graph(count_vert(save));
 	fill_graph(graph, all, count_links(save));
-	print_graph(graph);
+//	print_graph(graph);
 
 	int *arr = malloc(sizeof(int) * graph->count_vert);
 	t_node *node_start = find_node(graph, all->dest, all->start);
