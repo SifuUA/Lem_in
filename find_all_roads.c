@@ -129,10 +129,25 @@ char	*get_to(char *str, char *to)
 	return (res);
 }
 
-void    rec_f(t_all *all, t_graph *graph, t_node *node)
+int 	if_all_mark(t_graph *graph, t_node *node)
+{
+
+	while (node)
+	{
+		if (node->mark != 1)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}
+
+void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 {
 	t_node *tmp;
+	t_node *s;
 
+	if (all->j++ == 0)
+		all->ss = graph->array[find_index(graph->array, node->dest)].head;
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 			ft_strcmp(node->dest, all->end) != 0)
 		return ;
@@ -155,14 +170,24 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 	while (node)
 	{
 		if (all->flag != 3)
+		{
 			tmp = graph->array[find_index(graph->array, node->dest)].head;
+		}
 		else
 		{
 			tmp = node;
 			all->flag = 0;
 		}
-		rec_f(all, graph, tmp);
+		node->mark = 1;
+		rec_f(all, graph, tmp, start);
 		node = tmp->next;
 		all->flag = 3;
+		if (if_all_mark(graph, all->ss) && node == NULL && ft_strcmp(tmp->begin, all->ss->begin) == 0)
+		{
+			node = start->next;
+			all->flag = 0;
+			all->i++;
+			all->r_rec = 0;
+		}
 	}
 }

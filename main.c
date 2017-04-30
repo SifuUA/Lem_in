@@ -36,8 +36,7 @@ int		main(int argc, char **argv)
 	int *arr = malloc(sizeof(int) * graph->count_vert);
 	t_node *node_start = find_node(graph, all->dest, all->start);
 	all->res[0] = node_start->begin;
-
-	rec_f(all, graph, node_start);
+	rec_f(all, graph, node_start, node_start);
 	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
@@ -66,4 +65,20 @@ int		start_rec(int step, int *path, t_rooms *from, t_info *info)
 	}
 	return (0);
 }
+
+
+
+
+
+
+ 1 2 7 4 3 5 6 0
+1 2 7 4  0
+1 2 7  6 5 3 4 0
+1 2 7 6  0
+1 2  4 7 6 5 3 0
+1 2 4  0
+1 2  5 6 7 4 3 0
+1 2 5 6  0
+1 2 5  3 4 7 6 0
+1 2 5 3 4  0
  */
