@@ -38,11 +38,12 @@ int		find_index(t_head *arr, char *str)
 	{
 		if (ft_strcmp(p, str) == 0)
 			return (i);
-		if (arr[i + 1].head)
+		if (arr[i + 1].head && arr[i + 1].head->begin && arr[i + 1].head->dest)
 			p = arr[i + 1].head->begin;
 		else
 		{
 			p = NULL;
+			arr[i + 1].head = NULL;
 			i++;
 			continue;
 			//flag = 1;

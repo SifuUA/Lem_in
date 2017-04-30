@@ -159,13 +159,16 @@ int 	check_end(char *str, char *end, t_graph *graph)
 	return (0);
 }
 
-void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
+void    rec_f(t_all *all, t_graph *graph, t_node *node)
 {
 	t_node *tmp;
-	t_node *s;
+
 
 	if (all->j++ == 0)
+	{
 		all->ss = graph->array[find_index(graph->array, node->dest)].head;
+		all->start_save = node;
+	}
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 			ft_strcmp(node->dest, all->end) != 0)
 		return ;
@@ -196,21 +199,21 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start)
 			all->flag = 0;
 		}
 		node->mark = 1;
-		rec_f(all, graph, tmp, start);
+		rec_f(all, graph, tmp);
 		node = tmp->next;
 		all->flag = 3;
 		if (if_all_mark(graph, all->ss) && node == NULL &&
 				ft_strcmp(tmp->begin, all->ss->begin) == 0 &&
-				start->next)
+				all->start_save->next)
 		{
-			node = start->next;
+			node = all->start_save->next;
 			all->flag = 0;
 			all->i++;
 			all->r_rec = 0;
-			all->res[all->i] = start->begin;
+			all->res[all->i] = all->start_save->begin;
 			all->res[all->i] = ft_strjoin(all->res[all->i], " ");
 			all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
-			start = start->next;
+			all->start_save = all->start_save->next;
 		}
 	}
 }

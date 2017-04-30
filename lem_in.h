@@ -43,6 +43,7 @@ typedef struct 			s_all
 	int 				z;
 	int 				r_rec;
 	t_node				*ss;
+	t_node				*start_save;
 }						t_all;
 
 void					fill_all(t_all *all, char **str);
@@ -60,6 +61,6 @@ t_all					*creat_struct(int count_vert, int count_links);
 //void 					fill_matrix(int **matrix, t_all *all, int size);
 void 					fill_graph(t_graph *graph, t_all *all, int count);
 void					print_graph(t_graph *graph);
-void					rec_f(t_all *all, t_graph *graph, t_node *node, t_node *start);
+void					rec_f(t_all *all, t_graph *graph, t_node *node);
 struct					s_node * find_node(t_graph *graph, char *dest, char *begin);
 #endif
