@@ -239,7 +239,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 		{
 			tmp = node;
 			all->flag = 0;
-			//if (all->r_rec == 1)
+			//if (all->r_rec == 1)//не ясно чи потрібна
 				all->res[all->i] = clear_other(ft_strsplit(all->res[all->i], ' '), node->begin);
 		}
 		node->mark = 1;
