@@ -183,7 +183,7 @@ char	*clear_other(char **ar, char *str)
 
 	i = 0;
 	res = NULL;
-	while (ft_strcmp(ar[i], str) != 0)
+	while (ar[i] && ft_strcmp(ar[i], str) != 0)
 	{
 		tmp = ft_strjoin(res, ar[i]);
 		res = ft_strjoin(tmp, " ");
@@ -227,7 +227,6 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 	{
 
 		all->r_rec = 1;
-		//all->k = 1;
 		ft_putstr(all->res[all->i]);
 		ft_putstr("\n");
 		return ;
@@ -240,7 +239,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 		{
 			tmp = node;
 			all->flag = 0;
-			if (all->r_rec == 1)
+			//if (all->r_rec == 1)
 				all->res[all->i] = clear_other(ft_strsplit(all->res[all->i], ' '), node->begin);
 		}
 		node->mark = 1;
