@@ -141,6 +141,14 @@ int 	if_all_mark(t_graph *graph, t_node *node)
 	return (1);
 }
 
+int 	ft_strchr_arr(char **arr, char *str)
+{
+	int i;
+
+	i = 0;
+	while (arr)
+}
+
 int 	check_end(char *str, char *end, t_graph *graph)
 {
 	char **tmp;
@@ -163,7 +171,8 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 {
 	t_node *tmp;
 
-
+	if (ft_strcmp(node->dest, all->end) == 0)
+		all->r_rec = 1;
 	if (all->j++ == 0)
 	{
 		all->ss = graph->array[find_index(graph->array, node->dest)].head;
@@ -171,11 +180,15 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 	}
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 			ft_strcmp(node->dest, all->end) != 0)
-		return ;
+	{
+		node->mark = 1;
+		return;
+	}
 	else
 	{
 		if (all->r_rec == 1)
 		{
+			if ()
 			all->i++;
 			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
 		}

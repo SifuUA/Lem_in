@@ -37,7 +37,7 @@ int		main(int argc, char **argv)
 	t_node *node_start = find_node(graph, all->dest, all->start);
 	all->res[0] = node_start->begin;
 	rec_f(all, graph, node_start);
-	all->res[all->i] = NULL;
+	all->res[all->i + 1] = NULL;
 	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));

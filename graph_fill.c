@@ -92,6 +92,7 @@ void 	fill_graph(t_graph *graph, t_all *all, int count)
 
 	i = 0;
 	j = 0;
+	ft_arr_putstr(all->links);
 	while (j < count)
 	{
 		add_new(graph, all->links[i], all->links[i + 1]);
