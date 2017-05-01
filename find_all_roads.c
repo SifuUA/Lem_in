@@ -175,9 +175,23 @@ int 	check_end(char *str, char *end, t_graph *graph)
 	return (0);
 }
 
-void	clear_other()
+char	*clear_other(char **ar, char *str)
 {
+	int		i;
+	char	*res;
+	char	*tmp;
 
+	i = 0;
+	res = NULL;
+	while (ft_strcmp(ar[i], str) != 0)
+	{
+		tmp = ft_strjoin(res, ar[i]);
+		res = ft_strjoin(tmp, " ");
+		i++;
+	}
+	tmp = ft_strjoin(res, ar[i]);
+	res = ft_strjoin(tmp, " ");
+	return (res);
 }
 
 void    rec_f(t_all *all, t_graph *graph, t_node *node)
@@ -191,7 +205,6 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 		all->ss = graph->array[find_index(graph->array, node->dest)].head;
 		all->start_save = node;
 	}
-
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 			ft_strcmp(node->dest, all->end) != 0)
 	{
@@ -224,6 +237,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 		{
 			tmp = node;
 			all->flag = 0;
+			all->res[all->i] = clear_other(ft_strsplit(all->res[all->i], ' '), node->begin);
 		}
 		node->mark = 1;
 		rec_f(all, graph, tmp);
