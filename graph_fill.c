@@ -67,21 +67,23 @@ t_node 	*add_node(char *begin, char *dest)
 	return (node);
 }
 
-void	add_new(t_graph *graph, char *src, char *dest)
+void	add_new(t_graph *graph, char *src, char *dest, t_all *all)
 {
 	t_node *node;
 	int		index;
-
 
 	node = add_node(src, dest);
 	index = find_index(graph->array, src);
 	node->next = graph->array[index].head;
 	graph->array[index].head = node;
 
-	node = add_node(dest, src);
+
+		node = add_node(dest, src);
 	index = find_index(graph->array, dest);
 	node->next = graph->array[index].head;
 	graph->array[index].head = node;
+	if (ft_strcmp(src, all->start) == 0 || ft_strcmp(dest, all->start) == 0)
+		all->start_node = graph->array[index];
 
 }
 
@@ -95,9 +97,17 @@ void 	fill_graph(t_graph *graph, t_all *all, int count)
 	//ft_arr_putstr(all->links);
 	while (j < count)
 	{
-		add_new(graph, all->links[i], all->links[i + 1]);
+		add_new(graph, all->links[i], all->links[i + 1], all);
 		i += 2;
 		j++;
+	}
+	i = 0;
+	struct s_node	*tmp;
+	while (i < graph->count_vert)
+	{
+		 tmp = graph->array[i].head;
+		graph->array->next = tmp;
+
 	}
 }
 

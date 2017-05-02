@@ -196,7 +196,16 @@ char	*clear_other(char **ar, char *str)
 
 void    rec_f(t_all *all, t_graph *graph, t_node *node)
 {
-	t_node *tmp;
+	t_node *n;
+
+
+
+
+
+
+
+
+	/*t_node *tmp;
 
 	//if (ft_strcmp(node->dest, all->end) == 0)
 	//	all->r_rec = 1;
@@ -258,5 +267,5 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 			all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 			all->start_save = all->start_save->next;
 		}
-	}
+	}*/
 }

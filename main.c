@@ -13,7 +13,7 @@ int		main(int argc, char **argv)
 	int i;
 
 	i = 0;
-	fd = open("ant_farms_samples/test6", O_RDONLY);
+	fd = open("afs/test", O_RDONLY);
 	save = (char **)malloc(sizeof(char *) * 1000);
 	while (get_next_line(fd, &line) && *line != 0)
 	{
@@ -36,7 +36,9 @@ int		main(int argc, char **argv)
 	int *arr = malloc(sizeof(int) * graph->count_vert);
 	t_node *node_start = find_node(graph, all->dest, all->start);
 	all->res[0] = node_start->begin;
-	rec_f(all, graph, node_start);
+
+	//rec_f()
+	//rec_f(all, graph, node_start);
 	all->res[all->i + 1] = NULL;
 	ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
@@ -46,6 +48,25 @@ int		main(int argc, char **argv)
 }
 
 /*
+
+	t_str	*p;
+
+	p = from->n_room; //remove from path
+	if (already_been_hear(path, step, from->nbr) == 1)
+		return (0);
+	path[step] = from->nbr;
+	if (from->nbr == INT_MAX)
+	{
+		ft_lstadd(&(info->paths), ft_lstnew(path, sizeof(int) * (step + 1)));
+		return (1);
+	}
+	while (p)
+	{
+		start_rec(step + 1, path, (t_rooms*)(p->str), info);
+		p = p->next;
+	}
+	return (0);
+
 
 
 1 2 7 4 3 5 6  0

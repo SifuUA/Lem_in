@@ -16,6 +16,7 @@ typedef struct		s_node
 typedef struct			s_head
 {
 	struct s_node		*head;
+	//struct s_node		*next;
 	char 				*name;
 }						t_head;
 
@@ -25,9 +26,15 @@ typedef struct 			s_graph
 	struct s_head	 	*array;
 }						t_graph;
 
+typedef struct			s_llist
+{
+	struct	s_head		head;
+}						t_llist;
+
 typedef struct 			s_all
 {
 	char				*start;
+	struct s_head start_node;
 	char 				*end;
 	char 				**links;
 	char 				**verticies;
