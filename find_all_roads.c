@@ -198,7 +198,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 {
 	t_node *n;
 
-
+//переделать
 
 
 
