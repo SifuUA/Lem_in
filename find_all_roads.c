@@ -194,32 +194,13 @@ char	*clear_other(char **ar, char *str)
 	return (res);
 }
 
-void    rec_f(t_all *all, t_graph *graph, t_node *node)
+int 	f_check(t_all *all, t_node *node)
 {
-	t_node *n;
-
-//переделать
-
-
-
-
-
-
-	/*t_node *tmp;
-
-	//if (ft_strcmp(node->dest, all->end) == 0)
-	//	all->r_rec = 1;
-
-	if (all->j++ == 0)
-	{
-		all->ss = graph->array[find_index(graph->array, node->dest)].head;
-		all->start_save = node;
-	}
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
-			ft_strcmp(node->dest, all->end) != 0)
+		ft_strcmp(node->dest, all->end) != 0)
 	{
 		node->mark = 1;
-		return;
+		return (1);
 	}
 	else
 	{
@@ -236,10 +217,26 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 	{
 
 		all->r_rec = 1;
-		ft_putstr(all->res[all->i]);
-		ft_putstr("\n");
-		return ;
+		all->fin_res[all->i] = all->res[all->i];
+		//ft_putstr(all->res[all->i]);
+		//ft_putstr("\n");
+		return (1);
 	}
+	return (0);
+}
+
+void    rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
+{
+
+	t_node *tmp;
+
+	if (all->j++ == 0)
+	{
+		all->ss = graph->array[find_index(graph->array, node->dest)].head;
+		all->start_save = node;
+	}
+	if (f_check(all, node) == 1)
+		return ;
 	while (node)
 	{
 		if (all->flag != 3)
@@ -248,16 +245,14 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 		{
 			tmp = node;
 			all->flag = 0;
-			//if (all->r_rec == 1)//не ясно чи потрібна
-				all->res[all->i] = clear_other(ft_strsplit(all->res[all->i], ' '), node->begin);
+			all->res[all->i] = clear_other(ft_strsplit(all->res[all->i], ' '), node->begin);
 		}
 		node->mark = 1;
-		rec_f(all, graph, tmp);
+		rec_f(all, graph, tmp, dep + 1);
 		node = tmp->next;
 		all->flag = 3;
 		if (if_all_mark(graph, all->ss) && node == NULL &&
-				ft_strcmp(tmp->begin, all->ss->begin) == 0 &&
-				all->start_save->next)
+				all->start_save->next && dep == 0)
 		{
 			node = all->start_save->next;
 			all->flag = 0;
@@ -267,5 +262,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node)
 			all->res[all->i] = ft_strjoin(all->res[all->i], node->dest);
 			all->start_save = all->start_save->next;
 		}
-	}*/
+		else if (node == NULL && ft_strcmp(tmp->begin, all->end) == 0)
+			all->fin_res[all->i] = all->res[all->i];
+	}
 }

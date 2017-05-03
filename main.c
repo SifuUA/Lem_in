@@ -13,7 +13,7 @@ int		main(int argc, char **argv)
 	int i;
 
 	i = 0;
-	fd = open("afs/test", O_RDONLY);
+	fd = open("ant_farms_samples/test4", O_RDONLY);
 	save = (char **)malloc(sizeof(char *) * 1000);
 	while (get_next_line(fd, &line) && *line != 0)
 	{
@@ -38,9 +38,10 @@ int		main(int argc, char **argv)
 	all->res[0] = node_start->begin;
 
 	//rec_f()
-	//rec_f(all, graph, node_start);
+	rec_f(all, graph, node_start, 0);
 	all->res[all->i + 1] = NULL;
-	ft_arr_putstr(all->res);
+	ft_arr_putstr(all->fin_res);
+	//ft_arr_putstr(all->res);
 	//matrix = creat_matrix(count_vert(save));
 	//fill_matrix(matrix, all, count_vert(save));
 

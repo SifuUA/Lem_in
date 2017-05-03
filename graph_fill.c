@@ -103,11 +103,11 @@ void 	fill_graph(t_graph *graph, t_all *all, int count)
 	}
 	i = 0;
 	struct s_node	*tmp;
-	while (i < graph->count_vert)
+	/*while (i < graph->count_vert)
 	{
 		 tmp = graph->array[i].head;
-		graph->array->next = tmp;
+		//graph->array= tmp;
 
 	}
-}
+*/}
 
