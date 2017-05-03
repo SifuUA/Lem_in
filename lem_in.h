@@ -33,11 +33,10 @@ typedef struct			s_llist
 typedef struct 			s_all
 {
 	char				*start;
-	struct s_head start_node;
+	struct s_head 		start_node;
 	char 				*end;
 	char 				**links;
 	char 				**verticies;
-	int					vert;
 	int					link;
 	long int			ants;
 	int 				flag;
@@ -46,11 +45,11 @@ typedef struct 			s_all
 	char				*dest;
 	int 				j;
 	int 				k;
-	int 				z;
 	int 				r_rec;
 	char 				**fin_res;
 	t_node				*ss;
 	t_node				*start_save;
+	t_node				*tmp;
 }						t_all;
 
 void					fill_all(t_all *all, char **str);
