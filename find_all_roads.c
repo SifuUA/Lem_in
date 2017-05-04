@@ -1,6 +1,5 @@
 #include "lem_in.h"
 
-
 void	check_in_while(t_all *all, t_graph *graph, t_node **node, t_node **tmp)
 {
 	if (all->flag != 3)

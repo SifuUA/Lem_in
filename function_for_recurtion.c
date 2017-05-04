@@ -1,3 +1,5 @@
+#include "lem_in.h"
+
 int 	check_res(char *res, char *str)
 {
 	int i;
