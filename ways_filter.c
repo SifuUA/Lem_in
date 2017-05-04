@@ -35,27 +35,36 @@ char	**check_ways(char **res, char *start, char *end)
 			f_res[j++] = ft_strdup(res[i]);
 		i++;
 	}
+	f_res[i] = NULL;
 	free_arr(res);
 	return (f_res);
 }
 
-int 	find_same(char *i, char *j)
+int 	find_same(char *i, char *j, t_all *all)
 {
 	int 	k;
-	char 	**tmp;
+	int 	z;
+	char 	**ar_i;
+	char 	**ar_j;
 
-	j = 0;
-	tmp = ft_strsplit(i, ' ');
-	while (tmp[k])
+	z = 1;
+	k = 1;
+	ar_i = ft_strsplit(i, ' ');
+	ar_j = ft_strsplit(j, ' ');
+	while (ar_i[k] && ft_strcmp(ar_i[k], all->end ) != 0)
 	{
-		if (ft_strcmp(tmp[k], j))
-			return (1);
-		i++;
+		while (ar_j[z])
+		{
+			if (ft_strcmp(ar_i[k], ar_j[z]) == 0)
+				return (1);
+			z++;
+		}
+		k++;
 	}
 	return (0);
 }
 
-void	fill_matrix(int **matrix, char **sample, int size)
+void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 {
 	int i;
 	int j;
@@ -66,21 +75,35 @@ void	fill_matrix(int **matrix, char **sample, int size)
 		j = 0;
 		while (j < size)
 		{
-			matrix[i][j] = find_same(sample[i], sample[j]);
-			ft_putnbr(matrix[i][j]);
+			if (i == j)
+				matrix[i][j] = 1;
+			else
+				matrix[i][j] = find_same(sample[i], sample[j], all);
+				ft_putnbr(matrix[i][j]);
+
 			j++;
+
 		}
+		ft_putstr("\n");
 		i++;
 	}
 }
 
 void	choose_ways(t_all *all)
 {
+	int 	i;
 	char	**sample;
 	int		**matrix;
 
+	i = 0;
+
 	sample = check_ways(all->fin_res, all->start, all->end);
 	matrix = (int **)malloc(sizeof(int*) * len_arr(sample));
-	fill_matrix(matrix, sample, len_arr(sample) - 1);
+	while (i < len_arr(sample))
+	{
+		matrix[i] = (int *)malloc(sizeof(int) * len_arr(sample));
+		i++;
+	}
+	fill_matrix(matrix, sample, len_arr(sample), all);
 	ft_arr_putstr(sample);
 }
