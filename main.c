@@ -38,7 +38,6 @@ int		main(int argc, char **argv)
 	t_node *node_start = find_node(graph, all->dest, all->start);
 	all->res[0] = node_start->begin;
 
-	//rec_f()
 	rec_f(all, graph, node_start, 0);
 	all->res[all->i + 1] = NULL;
 	ft_arr_putstr(all->fin_res);
