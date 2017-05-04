@@ -27,7 +27,7 @@ void	read_and_write(t_all **all, t_graph **graph)
 	(*all)->res[0] = node_start->begin;
 	rec_f(*all, *graph, node_start, 0);
 	(*all)->res[(*all)->i + 1] = NULL;
-	(*all)->fin_res[(*all)->k + 1] = NULL;
+	(*all)->fin_res[(*all)->k + 1] = NULL;// end
 	//ft_arr_putstr((*all)->fin_res);
 	close(fd);
 }
