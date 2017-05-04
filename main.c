@@ -13,7 +13,7 @@ int		main(int argc, char **argv)
 	int i;
 
 	i = 0;
-	fd = open("ant_farms_samples/test12", O_RDONLY);
+	fd = open("ant_farms_samples/test7", O_RDONLY);
 	save = (char **)malloc(sizeof(char *) * 1000);
 	while (get_next_line(fd, &line) && *line != 0)
 	{
@@ -48,45 +48,3 @@ int		main(int argc, char **argv)
 
 	close(fd);
 }
-
-/*
-
-	t_str	*p;
-
-	p = from->n_room; //remove from path
-	if (already_been_hear(path, step, from->nbr) == 1)
-		return (0);
-	path[step] = from->nbr;
-	if (from->nbr == INT_MAX)
-	{
-		ft_lstadd(&(info->paths), ft_lstnew(path, sizeof(int) * (step + 1)));
-		return (1);
-	}
-	while (p)
-	{
-		start_rec(step + 1, path, (t_rooms*)(p->str), info);
-		p = p->next;
-	}
-	return (0);
-
-
-
-1 2 7 4 3 5 6  0
-1 2 7 6 5 3 4  0
-1 2 7 6  0
-1 2 4 7 6  0
-1 2 4 3 5 6  0
-1 2 4  0
-1 2 5 6 7 4  0
-1 2 5 6  0
-1 2 5 3 4 7 6  0
-1 2 5 3 4  0
-1 3 5 6 7 4  0
-1 3 5 6 7 2 4  0
-1 3 5 6  0
-1 3 5 2 7 4  0
-1 3 5 2 7 6  0
-1 3 5 2 4 7 6  0
-1 3 5 2 4  0
-
- */
