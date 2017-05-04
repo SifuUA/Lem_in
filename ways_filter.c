@@ -39,10 +39,36 @@ char	**check_ways(char **res, char *start, char *end)
 	return (f_res);
 }
 
+int 	find_same(char *i, char *j)
+{
+
+}
+
+void	fill_matrix(int **matrix, char **sample, int size)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			matrix[i][j] = find_same(sample[i], sample[j]);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	choose_ways(t_all *all)
 {
-	char	**tmp;
-	int		**mat
-	tmp = check_ways(all->fin_res, all->start, all->end);
-	ft_arr_putstr(tmp);
+	char	**sample;
+	int		**matrix;
+
+	sample = check_ways(all->fin_res, all->start, all->end);
+	matrix = (int **)malloc(sizeof(int*) * len_arr(sample));
+	fill_matrix(matrix, sample, );
+	ft_arr_putstr(sample);
 }
