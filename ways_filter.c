@@ -41,7 +41,18 @@ char	**check_ways(char **res, char *start, char *end)
 
 int 	find_same(char *i, char *j)
 {
+	int 	k;
+	char 	**tmp;
 
+	j = 0;
+	tmp = ft_strsplit(i, ' ');
+	while (tmp[k])
+	{
+		if (ft_strcmp(tmp[k], j))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 void	fill_matrix(int **matrix, char **sample, int size)
@@ -56,6 +67,7 @@ void	fill_matrix(int **matrix, char **sample, int size)
 		while (j < size)
 		{
 			matrix[i][j] = find_same(sample[i], sample[j]);
+			ft_putnbr(matrix[i][j]);
 			j++;
 		}
 		i++;
@@ -69,6 +81,6 @@ void	choose_ways(t_all *all)
 
 	sample = check_ways(all->fin_res, all->start, all->end);
 	matrix = (int **)malloc(sizeof(int*) * len_arr(sample));
-	fill_matrix(matrix, sample, );
+	fill_matrix(matrix, sample, len_arr(sample) - 1);
 	ft_arr_putstr(sample);
 }
