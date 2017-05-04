@@ -75,4 +75,5 @@ int 					if_all_mark(t_node *node);
 char					*get_to(char *str, char *to);
 struct s_node 			* find_node(t_graph *graph, char *dest, char *begin);
 int 					check_res(char *res, char *str);
+void					choose_ways(t_all *all);
 #endif
