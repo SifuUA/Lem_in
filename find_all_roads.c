@@ -94,7 +94,7 @@ char	*clear_other(char **ar, char *str)
 	return (res);
 }
 
-int 	f_check(t_all *all, t_node *node, t_node *tmp)
+int 	f_check(t_all *all, t_node *node, t_graph *graph, int dep)
 {
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 		ft_strcmp(node->dest, all->end) != 0)
@@ -118,15 +118,12 @@ int 	f_check(t_all *all, t_node *node, t_node *tmp)
 
 		all->r_rec = 1;
 		all->fin_res[all->k++] = all->res[all->i];
-		if (tmp != NULL)
+		if (dep == 0 && ft_strcmp(node->dest, all->end) == 0 && node->next != NULL)
+			return (0);
+		else
 			return (1);
 	}
 	return (0);
-}
-
-void	aft_rec_chec()
-{
-
 }
 
 void    rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
@@ -139,7 +136,7 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
 		all->ss = graph->array[find_index(graph->array, node->dest)].head;
 		all->start_save = node;
 	}
-	if (f_check(all, node, all->tmp) == 1)
+	if (f_check(all, node, graph, dep) == 1)
 		return ;
 	while (node)
 	{
@@ -167,8 +164,6 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
 			all->start_save = all->start_save->next;
 		}
 		else if (node == NULL && ft_strcmp(tmp->begin, all->end) == 0)
-		{
 			all->fin_res[all->k++] = all->res[all->i];
-		}
 	}
 }

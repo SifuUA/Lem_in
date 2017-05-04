@@ -21,7 +21,8 @@ typedef struct			s_head
 
 typedef struct 			s_graph
 {
-	int					count_vert;
+	long int			count_vert;
+	long int			count_links;
 	struct s_head	 	*array;
 }						t_graph;
 
