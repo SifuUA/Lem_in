@@ -72,7 +72,7 @@ static char			**create_arr(char const *s, char c)
 
 char				**ft_strsplit(char const *s, char c)
 {
-	if (s && *s)
+	if (s && *s && *s != '\0')
 		s = split_start(s, c);
 	else
 		return (NULL);

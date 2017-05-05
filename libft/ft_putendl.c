@@ -16,7 +16,7 @@ void	ft_putendl(char const *s)
 {
 	if (!s)
 		return ;
-	while (s && *s)
+	while (s && *s && *s != '\0')
 	{
 		ft_putchar(*s++);
 	}
