@@ -12,7 +12,7 @@ void	read_and_write(t_all **all, t_graph **graph)
 	int 	i;
 
 	i = 0;
-	fd = open("ant_farms_samples/test13", O_RDONLY);
+	fd = open("ant_farms_samples/test", O_RDONLY);
 	save = (char **)malloc(sizeof(char *) * 1000);
 	while (get_next_line(fd, &line) && *line != 0)
 	{
@@ -27,7 +27,7 @@ void	read_and_write(t_all **all, t_graph **graph)
 	(*all)->res[0] = node_start->begin;
 	rec_f(*all, *graph, node_start, 0);
 	(*all)->res[(*all)->i + 1] = NULL;
-	(*all)->fin_res[(*all)->k + 1] = NULL;// end
+	(*all)->fin_res[(*all)->k + 1] = NULL;
 	//ft_arr_putstr((*all)->fin_res);
 	close(fd);
 }

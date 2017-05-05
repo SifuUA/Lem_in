@@ -32,11 +32,12 @@ char	**check_ways(char **res, char *start, char *end)
 	{
 		if (count_start_end(res[i], start) == 1 &&
 				count_start_end(res[i], end) == 1)
-			f_res[j++] = ft_strdup(res[i]);
+			f_res[j++] = res[i];
 		i++;
 	}
-	f_res[i] = NULL;
-	free_arr(res);
+	f_res[j] = NULL;
+	//free_arr(res);
+	//ft_arr_putstr(f_res);
 	return (f_res);
 }
 
@@ -47,13 +48,13 @@ int 	find_same(char *i, char *j, t_all *all)
 	char 	**ar_i;
 	char 	**ar_j;
 
-	z = 1;
 	k = 1;
 	ar_i = ft_strsplit(i, ' ');
 	ar_j = ft_strsplit(j, ' ');
 	while (ar_i[k] && ft_strcmp(ar_i[k], all->end ) != 0)
 	{
-		while (ar_j[z])
+		z = 1;
+		while (ar_j && ar_j[z])
 		{
 			if (ft_strcmp(ar_i[k], ar_j[z]) == 0)
 				return (1);
@@ -79,7 +80,7 @@ void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 				matrix[i][j] = 1;
 			else
 				matrix[i][j] = find_same(sample[i], sample[j], all);
-				ft_putnbr(matrix[i][j]);
+			ft_putnbr(matrix[i][j]);
 
 			j++;
 
@@ -98,6 +99,7 @@ void	choose_ways(t_all *all)
 	i = 0;
 
 	sample = check_ways(all->fin_res, all->start, all->end);
+	//ft_arr_putstr(sample);
 	matrix = (int **)malloc(sizeof(int*) * len_arr(sample));
 	while (i < len_arr(sample))
 	{
