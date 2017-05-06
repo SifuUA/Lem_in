@@ -1,7 +1,5 @@
 #include "lem_in.h"
 
-
-
 char	**check_matrix(int **matrix, int len, char **sample)
 {
 	int i;
@@ -74,26 +72,60 @@ int 	smallest(int num, int **ar, int size)
 	return (0);
 }
 
-void	del_contain(char **str, char *smallest)
+void	del_contain(char **str, char *exemp, int num)
 {
 	int i;
 	int j;
 	char **tmp;
-	char **hz;
+	char **tmp1;
 
 	i = 0;
-	tmp = ft_strsplit(smallest, ' ');
+	tmp = ft_strsplit(*str, ' ');
 	while (str[i])
 	{
 		j = 1;
-		hz = ft_strsplit(str[i], ' ');
-		while (tmp[j])
+		if (i != num)
 		{
-			if (ft_strcmp(hz[j], tmp[j]) == 0 )
+			tmp1 = ft_strsplit(str[i], ' ');
+			while (tmp1[j])
 			{
-				ft_bzero(str[i], ft_strlen(str[i]) - 1);
-				break;
+				if (ft_strcmp(tmp[j], tmp1[j]) == 0)
+				{
+					ft_bzero(str[i], ft_strlen(str[i]) - 1);
+					break ;
+				}
+				j++;
 			}
+		}
+		i++;
+	}
+}
+
+void	sort_str(char **array, int size)
+{
+	int i;
+	int j;
+	char **str1;
+	char **str2;
+	char *tmp;
+
+	i = 0;
+	tmp = NULL;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size - 1)
+		{
+			str1 = ft_strsplit(array[j], ' ');
+			str2 = ft_strsplit(array[j + 1], ' ');
+			if (len_arr(str1) > len_arr(str2))
+			{
+				tmp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = tmp;
+			}
+			free_arr(str1);
+			free_arr(str2);
 			j++;
 		}
 		i++;
@@ -107,10 +139,12 @@ void	clear(char **str, int size)
 
 	i = 0;
 	arr_len = ar_len(str);
+	sort_str(str, size);
+	ft_putstr("**********************\n");
+	ft_arr_putstr(str);
 	while (str[i])
 	{
-		if (smallest(arr_len[i][0], arr_len, size) == 0)
-			del_contain(str, str[i]);
+		del_contain(str, str[i], i);
 		i++;
 	}
 
