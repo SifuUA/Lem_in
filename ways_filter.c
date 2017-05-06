@@ -114,5 +114,7 @@ void	choose_ways(t_all *all)
 	fill_matrix(matrix, sample, len, all);
 	tmp = check_matrix(matrix, len, sample);
 	ft_arr_putstr(tmp);
+	len = len_arr(tmp);
+	clear(tmp, len);
 
 }

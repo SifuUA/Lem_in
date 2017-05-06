@@ -22,7 +22,6 @@ typedef struct			s_head
 typedef struct 			s_graph
 {
 	long int			count_vert;
-	long int			count_links;
 	struct s_head	 	*array;
 }						t_graph;
 
@@ -77,4 +76,6 @@ struct s_node 			* find_node(t_graph *graph, char *dest, char *begin);
 int 					check_res(char *res, char *str);
 void					choose_ways(t_all *all);
 char					**check_matrix(int **matrix, int len, char **sample);
+void					clear(char **str, int size);
+void					sort(char **str);
 #endif
