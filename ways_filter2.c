@@ -94,7 +94,7 @@ int 	if_contain(char **s1, char **s2)
 	return (0);
 }
 
-int		del_contain(char **str, int size)
+int		del_contain(char **str, int size, char *current)
 {
 	int i;
 	int j;
@@ -103,10 +103,10 @@ int		del_contain(char **str, int size)
 
 	i = 0;
 	j = 0;
-	tmp = ft_strsplit(*str, ' ');
+	tmp = ft_strsplit(current, ' ');
 	while (i < size)
 	{
-		if (ft_strcmp(*str, str[i]) != 0)
+		if (ft_strcmp(current, str[i]) != 0)
 		{
 			tmp1 = ft_strsplit(str[i], ' ');
 			if (if_contain(tmp, tmp1))
@@ -174,13 +174,11 @@ char	**record(char **str, int  mem)
 char	**clear(char **str, int size)
 {
 	int 	i;
-	int 	**arrr_len;
 	int 	mem;
 	int		n_mem;
 	char 	**new_s;
 
 	i = 0;
-	arrr_len = ar_len(str);
 	ft_arr_putstr(str);
 	sort_str(str, size);
 	ft_putstr("**********************\n");
@@ -189,7 +187,7 @@ char	**clear(char **str, int size)
 	n_mem = 0;
 	while (i < mem)
 	{
-		n_mem = del_contain(str, mem);
+		n_mem = del_contain(str, mem, str[i]);
 		if (n_mem != mem)
 		{
 			new_s = record(str, n_mem);
@@ -197,6 +195,8 @@ char	**clear(char **str, int size)
 			str = new_s;
 			mem = n_mem;
 		}
+		ft_arr_putstr(str);
+		ft_putstr("**********************\n");
 		i++;
 	}
 	return (str);

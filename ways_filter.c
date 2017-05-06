@@ -19,6 +19,20 @@ int		count_start_end(char *ar, char *str)
 	return (count);
 }
 
+int		c_t(char **f_res, char *str)
+{
+	int i;
+
+	i = 0;
+	while (f_res[i])
+	{
+		if (ft_strcmp(f_res[i], str) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 char	**check_ways(char **res, char *start, char *end)
 {
 	int		i;
@@ -31,7 +45,7 @@ char	**check_ways(char **res, char *start, char *end)
 	while (res[i])
 	{
 		if (res[i] && count_start_end(res[i], start) == 1 &&
-				count_start_end(res[i], end) == 1)
+				count_start_end(res[i], end) == 1 && c_t(f_res, res[i]))
 			f_res[j++] = res[i];
 		//else
 		//	free(res[i]);
