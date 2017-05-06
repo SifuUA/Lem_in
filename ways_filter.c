@@ -74,12 +74,13 @@ void	choose_ways(t_all *all)
 		matrix[i] = (int *)malloc(sizeof(int) * len);
 		i++;
 	}
-	//ft_arr_putstr(sample);
 	fill_matrix(matrix, sample, len, all);
 	tmp = check_matrix(matrix, len, sample);
-	//ft_arr_putstr(tmp);
 	len = len_arr(tmp);
-	char **aaa = clear(tmp, len);
+	all->res = clear(tmp, len);
 	ft_putstr("**********************\n");
-	ft_arr_putstr(aaa);
+	ft_arr_putstr(all->res);
+	free_arr(all->res);
+	free_arr(all->fin_res);
+	run(all);
 }

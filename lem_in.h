@@ -78,4 +78,5 @@ char					**clear(char **str, int size);
 void					sort(char **str);
 void					fill_matrix(int **matrix, char **sample, int size, t_all *all);
 int 					if_contain(char **s1, char **s2);
+void					run(t_all *all);
 #endif
