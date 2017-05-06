@@ -77,10 +77,10 @@ void	choose_ways(t_all *all)
 	fill_matrix(matrix, sample, len, all);
 	tmp = check_matrix(matrix, len, sample);
 	len = len_arr(tmp);
+	free_arr(all->res);
+	free_arr(all->fin_res);
 	all->res = clear(tmp, len);
 	ft_putstr("**********************\n");
 	ft_arr_putstr(all->res);
-	free_arr(all->res);
-	free_arr(all->fin_res);
 	run(all);
 }
