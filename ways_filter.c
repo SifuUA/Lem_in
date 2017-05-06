@@ -92,35 +92,6 @@ void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 	}
 }
 
-char	**check_matrix(int **matrix, int len, char **sample)
-{
-	int i;
-	int j;
-	int k;
-	int one;
-	char **res;
-
-	i = 0;
-	k = 0;
-	res = (char **)malloc(sizeof(char *) * len + 1);
-	while (i < len)
-	{
-		j = 0;
-		one = 0;
-		while (j < len)
-		{
-			if (matrix[i][j] == 1)
-				one++;
-			j++;
-		}
-		if (one != len || len == 1)
-			res[k++] = ft_strdup(sample[i]);
-		i++;
-	}
-	//free_arr(sample);
-	res[i] = NULL;
-	return (res);
-}
 
 void	choose_ways(t_all *all)
 {
@@ -133,7 +104,6 @@ void	choose_ways(t_all *all)
 	i = 0;
 	sample = check_ways(all->fin_res, all->start, all->end);
 	len = len_arr(sample);
-	ft_arr_putstr(sample);
 	matrix = (int **)malloc(sizeof(int*) * len);
 	while (i < len)
 	{
@@ -144,4 +114,5 @@ void	choose_ways(t_all *all)
 	fill_matrix(matrix, sample, len, all);
 	tmp = check_matrix(matrix, len, sample);
 	ft_arr_putstr(tmp);
+
 }
