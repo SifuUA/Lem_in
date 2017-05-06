@@ -76,6 +76,6 @@ struct s_node 			* find_node(t_graph *graph, char *dest, char *begin);
 int 					check_res(char *res, char *str);
 void					choose_ways(t_all *all);
 char					**check_matrix(int **matrix, int len, char **sample);
-void					clear(char **str, int size);
+char					**clear(char **str, int size);
 void					sort(char **str);
 #endif

@@ -72,7 +72,29 @@ int 	smallest(int num, int **ar, int size)
 	return (0);
 }
 
-void	del_contain(char **str, char *exemp, int num)
+int 	if_contain(char **s1, char **s2)
+{
+	int i;
+	int j;
+	int len;
+
+	i = 1;
+	len = len_arr(s1);
+	while (i < len - 1)
+	{
+		j = 1;
+		while (s2[j])
+		{
+			if (ft_strcmp(s1[i], s2[j]) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int		del_contain(char **str, int size)
 {
 	int i;
 	int j;
@@ -80,25 +102,23 @@ void	del_contain(char **str, char *exemp, int num)
 	char **tmp1;
 
 	i = 0;
+	j = 0;
 	tmp = ft_strsplit(*str, ' ');
-	while (str[i])
+	while (i < size)
 	{
-		j = 1;
-		if (i != num)
+		if (ft_strcmp(*str, str[i]) != 0)
 		{
 			tmp1 = ft_strsplit(str[i], ' ');
-			while (tmp1[j])
+			if (if_contain(tmp, tmp1))
 			{
-				if (ft_strcmp(tmp[j], tmp1[j]) == 0)
-				{
-					ft_bzero(str[i], ft_strlen(str[i]) - 1);
-					break ;
-				}
+				ft_bzero(str[i], ft_strlen(str[i]) - 1);
 				j++;
 			}
+			free_arr(tmp1);
 		}
 		i++;
 	}
+	return (i - j);
 }
 
 void	sort_str(char **array, int size)
@@ -132,20 +152,52 @@ void	sort_str(char **array, int size)
 	}
 }
 
-void	clear(char **str, int size)
+char	**record(char **str, int  mem)
 {
-	int 	i;
-	int 	**arr_len;
+	int i;
+	int j;
+	char **new;
 
 	i = 0;
-	arr_len = ar_len(str);
-	sort_str(str, size);
-	ft_putstr("**********************\n");
-	ft_arr_putstr(str);
+	j = 0;
+	new = (char **)malloc(sizeof(char *) * (mem + 1));
 	while (str[i])
 	{
-		del_contain(str, str[i], i);
+		if (*str[i] != '\0')
+			new[j++] = ft_strdup(str[i]);
 		i++;
 	}
+	new[j] = NULL;
+	return (new);
+}
 
+char	**clear(char **str, int size)
+{
+	int 	i;
+	int 	**arrr_len;
+	int 	mem;
+	int		n_mem;
+	char 	**new_s;
+
+	i = 0;
+	arrr_len = ar_len(str);
+	ft_arr_putstr(str);
+	sort_str(str, size);
+	ft_putstr("**********************\n");
+	//ft_arr_putstr(str);
+	mem = len_arr(str);
+	n_mem = 0;
+	while (i < mem)
+	{
+		n_mem = del_contain(str, mem);
+		if (n_mem != mem)
+		{
+			new_s = record(str, n_mem);
+			free_arr(str);
+			str = new_s;
+			mem = n_mem;
+		}
+		i++;
+	}
+	return (str);
 }
