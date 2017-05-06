@@ -15,7 +15,7 @@ int		count_start_end(char *ar, char *str)
 			count++;
 		i++;
 	}
-	free_arr(tmp);
+	//free_arr(tmp);
 	return (count);
 }
 
@@ -30,7 +30,7 @@ char	**check_ways(char **res, char *start, char *end)
 	f_res = (char **)malloc(sizeof(char *) * len_arr(res));
 	while (res[i])
 	{
-		if (count_start_end(res[i], start) == 1 &&
+		if (res[i] && count_start_end(res[i], start) == 1 &&
 				count_start_end(res[i], end) == 1)
 			f_res[j++] = res[i];
 		//else

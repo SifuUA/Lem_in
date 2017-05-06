@@ -11,7 +11,7 @@ char	**read_and_write()
 	int 	i;
 
 	i = 0;
-	fd = open("ant_farms_samples/test11", O_RDONLY);
+	fd = open("ant_farms_samples/test15", O_RDONLY);
 	save = (char **)malloc(sizeof(char *) * 1000);
 	while (get_next_line(fd, &line) && *line != 0)
 	{
