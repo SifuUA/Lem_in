@@ -40,4 +40,5 @@ int		main(int argc, char **argv)
 	//all->res[all->i + 1] = NULL;
 	//all->fin_res[all->k + 1] = NULL;
 	choose_ways(all);
+
 }

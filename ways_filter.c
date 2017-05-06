@@ -57,56 +57,6 @@ char	**check_ways(char **res, char *start, char *end)
 	return (f_res);
 }
 
-int 	find_same(char *i, char *j, t_all *all)
-{
-	int 	k;
-	int 	z;
-	char 	**ar_i;
-	char 	**ar_j;
-
-	k = 1;
-	ar_i = ft_strsplit(i, ' ');
-	ar_j = ft_strsplit(j, ' ');
-	while (ar_i[k] && ft_strcmp(ar_i[k], all->end ) != 0)
-	{
-		z = 1;
-		while (ar_j && ar_j[z])
-		{
-			if (ft_strcmp(ar_i[k], ar_j[z]) == 0)
-				return (1);
-			z++;
-		}
-		k++;
-	}
-	return (0);
-}
-
-void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if (i == j)
-				matrix[i][j] = 1;
-			else
-				matrix[i][j] = find_same(sample[i], sample[j], all);
-			ft_putnbr(matrix[i][j]);
-
-			j++;
-
-		}
-		ft_putstr("\n");
-		i++;
-	}
-}
-
-
 void	choose_ways(t_all *all)
 {
 	int 	i;
@@ -130,5 +80,6 @@ void	choose_ways(t_all *all)
 	//ft_arr_putstr(tmp);
 	len = len_arr(tmp);
 	char **aaa = clear(tmp, len);
+	ft_putstr("**********************\n");
 	ft_arr_putstr(aaa);
 }

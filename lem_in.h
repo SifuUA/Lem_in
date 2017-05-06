@@ -63,8 +63,6 @@ int						count_links(char **str);
 int						count_vert(char **str);
 t_graph					*creat_graph(int count_v);
 t_all					*creat_struct(int count_vert, int count_links);
-//int 					**creat_matrix(int size);
-//void 					fill_matrix(int **matrix, t_all *all, int size);
 void 					fill_graph(t_graph *graph, t_all *all, int count);
 void					print_graph(t_graph *graph);
 void					rec_f(t_all *all, t_graph *graph, t_node *node, int dep);
@@ -78,4 +76,6 @@ void					choose_ways(t_all *all);
 char					**check_matrix(int **matrix, int len, char **sample);
 char					**clear(char **str, int size);
 void					sort(char **str);
+void					fill_matrix(int **matrix, char **sample, int size, t_all *all);
+int 					if_contain(char **s1, char **s2);
 #endif

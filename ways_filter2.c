@@ -1,99 +1,5 @@
 #include "lem_in.h"
 
-char	**check_matrix(int **matrix, int len, char **sample)
-{
-	int i;
-	int j;
-	int k;
-	int one;
-	char **res;
-
-	i = 0;
-	k = 0;
-	res = (char **)malloc(sizeof(char *) * len + 1);
-	while (i < len)
-	{
-		j = 0;
-		one = 0;
-		while (j < len)
-		{
-			if (matrix[i][j] == 1)
-				one++;
-			j++;
-		}
-		if (one != len || len == 1)
-			res[k++] = ft_strdup(sample[i]);
-		i++;
-	}
-	//free_arr(sample);
-	res[i] = NULL;
-	return (res);
-}
-
-int		**ar_len(char **str)
-{
-	int i;
-	int j;
-	int len;
-	int **count_room;
-	char **tmp;
-
-	i = 0;
-	j = 0;
-	len = len_arr(str);
-	count_room = (int **)malloc(sizeof(int *) * len);
-	while (i < len)
-	{
-		count_room[i] = (int *)malloc(sizeof(int) * 1);
-		i++;
-	}
-	i = 0;
-	while (str[i])
-	{
-		tmp = ft_strsplit(str[i], ' ');
-		count_room[i][j] = len_arr(tmp);
-		free_arr(tmp);
-		i++;
-	}
-	return (count_room);
-}
-
-int 	smallest(int num, int **ar, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (ar[i][0] < num)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int 	if_contain(char **s1, char **s2)
-{
-	int i;
-	int j;
-	int len;
-
-	i = 1;
-	len = len_arr(s1);
-	while (i < len - 1)
-	{
-		j = 1;
-		while (s2[j])
-		{
-			if (ft_strcmp(s1[i], s2[j]) == 0)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
 int		del_contain(char **str, int size, char *current)
 {
 	int i;
@@ -181,7 +87,6 @@ char	**clear(char **str, int size)
 	i = 0;
 	ft_arr_putstr(str);
 	sort_str(str, size);
-	ft_putstr("**********************\n");
 	//ft_arr_putstr(str);
 	mem = len_arr(str);
 	n_mem = 0;
@@ -195,8 +100,6 @@ char	**clear(char **str, int size)
 			str = new_s;
 			mem = n_mem;
 		}
-		ft_arr_putstr(str);
-		ft_putstr("**********************\n");
 		i++;
 	}
 	return (str);
