@@ -14,12 +14,15 @@
 
 void	ft_arr_putstr(char **str)
 {
-	if (str)
+	int i;
+
+	i = 0;
+	if (str[i])
 	{
-		while (str && *str != '\0')
+		while (str[i])
 		{
-			ft_putendl(*str);
-			str++;
+			ft_putendl(str[i]);
+			i++;
 		}
 	}
 }

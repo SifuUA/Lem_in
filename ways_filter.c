@@ -33,8 +33,8 @@ char	**check_ways(char **res, char *start, char *end)
 		if (count_start_end(res[i], start) == 1 &&
 				count_start_end(res[i], end) == 1)
 			f_res[j++] = res[i];
-		else
-			free(res[i]);
+		//else
+		//	free(res[i]);
 		i++;
 	}
 	f_res[j] = NULL;
@@ -117,7 +117,8 @@ char	**check_matrix(int **matrix, int len, char **sample)
 			res[k++] = ft_strdup(sample[i]);
 		i++;
 	}
-	free_arr(sample);
+	//free_arr(sample);
+	res[i] = NULL;
 	return (res);
 }
 
@@ -126,6 +127,7 @@ void	choose_ways(t_all *all)
 	int 	i;
 	char	**sample;
 	int		**matrix;
+	char 	**tmp;
 	int		len;
 
 	i = 0;
@@ -140,6 +142,6 @@ void	choose_ways(t_all *all)
 	}
 	ft_arr_putstr(sample);
 	fill_matrix(matrix, sample, len, all);
-
-	ft_arr_putstr(check_matrix(matrix, len, sample));
+	tmp = check_matrix(matrix, len, sample);
+	ft_arr_putstr(tmp);
 }

@@ -2,12 +2,11 @@
 #include <sys/fcntl.h>
 #include "lem_in.h"
 
-void	read_and_write(t_all **all, t_graph **graph)
+char	**read_and_write()
 {
 
 	char	*line;
 	char	**save;
-	t_node	*node_start;
 	int 	fd;
 	int 	i;
 
@@ -18,25 +17,27 @@ void	read_and_write(t_all **all, t_graph **graph)
 	{
 		save[i++] = line;
 	}
-	*all = creat_struct(count_vert(save), count_links(save));
-	fill_all(*all, save);
-	check(*all);
-	*graph = creat_graph(count_vert(save));
-	fill_graph(*graph, *all, count_links(save));
-	node_start = find_node(*graph, (*all)->dest, (*all)->start);
-	(*all)->res[0] = node_start->begin;
-	rec_f(*all, *graph, node_start, 0);
-	(*all)->res[(*all)->i + 1] = NULL;
-	(*all)->fin_res[(*all)->k + 1] = NULL;
-	//ft_arr_putstr((*all)->fin_res);
 	close(fd);
+	return (save);
 }
 
 int		main(int argc, char **argv)
 {
 	t_graph	*graph;
 	t_all 	*all;
+	t_node	*node_start;
+	char **save;
 
-	read_and_write(&all, &graph);
+	save = read_and_write();
+	all = creat_struct(count_vert(save), count_links(save));
+	fill_all(all, save);
+	check(all);
+	graph = creat_graph(count_vert(save));
+	fill_graph(graph, all, count_links(save));
+	node_start = find_node(graph, all->dest, all->start);
+	all->res[0] = node_start->begin;
+	rec_f(all, graph, node_start, 0);
+	//all->res[all->i + 1] = NULL;
+	//all->fin_res[all->k + 1] = NULL;
 	choose_ways(all);
 }
