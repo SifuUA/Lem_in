@@ -1,5 +1,17 @@
 #include "lem_in.h"
 
+int		len_int_ar(int *ar)
+{
+	int i;
+
+	i = 0;
+	while (ar[i] != STOP)
+	{
+		i++;
+	}
+		return (i);
+}
+
 int 	**get_ar(t_all *all)
 {
 	int 		length;
@@ -32,19 +44,87 @@ int 	**get_ar(t_all *all)
 	return (ar);
 }
 
-void 	move(t_all *all, int **ar)
+void 		ants_on_start(int **ar, t_all *all, long int *count)
+{
+	int i;
+
+	i = 0;
+	while (*count <= all->ants)
+	{
+		ar[i][0] = 1;
+		(*count)++;
+		i++;
+	}
+}
+
+int 	ants_in_road(int **ar)
 {
 	int i;
 	int j;
 
 	i = 0;
-	ants_on_start(ar, all);
-	while (ants_in_road())
+	while (ar[i])
 	{
-		ants_move();
+		j = 0;
+		while (ar[i][j])
+		{
+			if (ar[i][j + 2] == STOP)
+				break;
+			if (ar[i][j] == 1)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+void 	print_way(char **res, int i, int j, long int count)
+{
+	ft_putstr("L");
+	ft_putnbr(i);
+	ft_putstr("-");
+	ft_putstr()
+}
+
+void 	ants_move(int **ar, t_all *all, long int count)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (ar[i])
+	{
+		j = len_int_ar(ar[i]) - 2;
+		j = j < 0 ? 0 : j;
+		while (j >= 0)
+		{
+			if (ar[i][j] == 1)
+			{
+				ar[i][j + 1] = 1;
+				ar[i][j] = 0;
+				print_way(all->res, i, j, count);
+
+			}
+				j--;
+		}
+		ft_putstr("\n");
+		i++;
+	}
+}
+
+void 	move(t_all *all, int **ar)
+{
+	long int count;
+	int j;
+
+	count = 0;
+	ants_on_start(ar, all, &count);
+	while (ants_in_road(ar))
+	{
+		ants_move(ar, all, count);
 		if (all->ants > 0)
-
-
+			ants_on_start(ar, all, &count);
 	}
 }
 
