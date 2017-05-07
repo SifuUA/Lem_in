@@ -49,7 +49,7 @@ void 		ants_on_start(int **ar, t_all *all, long int *count)
 	int i;
 
 	i = 0;
-	while (*count <= all->ants)
+	while (ar[i])
 	{
 		ar[i][0] = 1;
 		(*count)++;
@@ -79,20 +79,25 @@ int 	ants_in_road(int **ar)
 	return (0);
 }
 
-void 	print_way(char **res, int i, int j, long int count)
+void 	print_way(char **res, int i, int j, long int ant)
 {
+	char **tmp;
+
+	tmp = ft_strsplit(res[i], ' ');
 	ft_putstr("L");
-	ft_putnbr(i);
+	ft_putnbr((int)ant);
 	ft_putstr("-");
-	ft_putstr()
+	ft_putstr(tmp[j + 1]);
 }
 
 void 	ants_move(int **ar, t_all *all, long int count)
 {
 	int i;
 	int j;
+	long int ant;
 
 	i = 0;
+	ant = 1;
 	while (ar[i])
 	{
 		j = len_int_ar(ar[i]) - 2;
@@ -103,7 +108,8 @@ void 	ants_move(int **ar, t_all *all, long int count)
 			{
 				ar[i][j + 1] = 1;
 				ar[i][j] = 0;
-				print_way(all->res, i, j, count);
+				print_way(all->res, i, j, ant);
+				ant++;
 
 			}
 				j--;
