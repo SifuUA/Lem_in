@@ -34,7 +34,18 @@ int 	**get_ar(t_all *all)
 
 void 	move(t_all *all, int **ar)
 {
+	int i;
+	int j;
 
+	i = 0;
+	ants_on_start(ar, all);
+	while (ants_in_road())
+	{
+		ants_move();
+		if (all->ants > 0)
+
+
+	}
 }
 
 void	run(t_all *all)
