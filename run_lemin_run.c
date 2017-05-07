@@ -51,8 +51,8 @@ void 		ants_on_start(int **ar, t_all *all, long int *count)
 	i = 0;
 	while (ar[i])
 	{
-		ar[i][0] = 1;
 		(*count)++;
+		ar[i][0] = (int)*count;
 		i++;
 	}
 }
@@ -66,12 +66,13 @@ int 	ants_in_road(int **ar)
 	while (ar[i])
 	{
 		j = 0;
-		while (ar[i][j])
+		while (ar[i][j] != STOP)
 		{
+			if (ar[i][j] != 0)
+				return (1);
 			if (ar[i][j + 2] == STOP)
 				break;
-			if (ar[i][j] == 1)
-				return (1);
+
 			j++;
 		}
 		i++;
@@ -79,15 +80,16 @@ int 	ants_in_road(int **ar)
 	return (0);
 }
 
-void 	print_way(char **res, int i, int j, long int ant)
+void 	print_way(char **res, int i, int j, int ant )
 {
 	char **tmp;
 
 	tmp = ft_strsplit(res[i], ' ');
 	ft_putstr("L");
-	ft_putnbr((int)ant);
+	ft_putnbr(ant);
 	ft_putstr("-");
 	ft_putstr(tmp[j + 1]);
+	ft_putstr(" ");
 }
 
 void 	ants_move(int **ar, t_all *all, long int count)
@@ -97,24 +99,36 @@ void 	ants_move(int **ar, t_all *all, long int count)
 	long int ant;
 
 	i = 0;
-	ant = 1;
+	ant = count;
 	while (ar[i])
 	{
 		j = len_int_ar(ar[i]) - 2;
 		j = j < 0 ? 0 : j;
 		while (j >= 0)
 		{
-			if (ar[i][j] == 1)
+			if (ar[i][j] != 0)
 			{
-				ar[i][j + 1] = 1;
+				ar[i][j + 1] = ar[i][j];
 				ar[i][j] = 0;
-				print_way(all->res, i, j, ant);
+				print_way(all->res, i, j, ar[i][j + 1]);
 				ant++;
 
 			}
-				j--;
+			j--;
 		}
 		ft_putstr("\n");
+		i++;
+	}
+}
+
+void 	zero_start(int **ar)
+{
+	int i;
+
+	i = 0;
+	while (ar[i])
+	{
+		ar[i][0] = 0;
 		i++;
 	}
 }
@@ -129,7 +143,7 @@ void 	move(t_all *all, int **ar)
 	while (ants_in_road(ar))
 	{
 		ants_move(ar, all, count);
-		if (all->ants > 0)
+		if (count < all->ants)
 			ants_on_start(ar, all, &count);
 	}
 }
