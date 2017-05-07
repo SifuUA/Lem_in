@@ -4,6 +4,7 @@
 # include "libft/libft.h"
 # include <stdio.h>
 
+# define STOP 77777777
 
 typedef struct		s_node
 {

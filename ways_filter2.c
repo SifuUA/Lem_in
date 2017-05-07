@@ -89,7 +89,6 @@ char	**clear(char **str, int size)
 	sort_str(str, size);
 	//ft_arr_putstr(str);
 	mem = len_arr(str);
-	n_mem = 0;
 	while (i < mem)
 	{
 		n_mem = del_contain(str, mem, str[i]);

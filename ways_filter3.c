@@ -40,12 +40,12 @@ void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 				matrix[i][j] = 1;
 			else
 				matrix[i][j] = find_same(sample[i], sample[j], all);
-			ft_putnbr(matrix[i][j]);
+			//ft_putnbr(matrix[i][j]);
 
 			j++;
 
 		}
-		ft_putstr("\n");
+		//ft_putstr("\n");
 		i++;
 	}
 }
