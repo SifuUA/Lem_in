@@ -55,7 +55,10 @@ void 		 ants_on_start(int **ar, t_all *all, long int *count)
 	while (ar[i] && *count < all->ants)
 	{
 		(*count)++;
-		ar[i][0] = (int)*count;
+		if ((all->ants - *count) > all->stoper[i])
+			ar[i][0] = (int)*count;
+		else
+			ar[i][0] = 0;
 		i++;
 	}
 }
