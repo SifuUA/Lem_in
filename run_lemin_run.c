@@ -22,14 +22,14 @@ int 	**get_ar(t_all *all)
 
 	i = 0;
 	len = len_arr(all->res);
-	ar = (int **)malloc(sizeof(int *) * len);
+	ar = (int **)malloc(sizeof(int *) * len + 1);
 	ar[len] = NULL;
 	while (all->res[i])
 	{
 		all->j = 0;
 		tmp = ft_strsplit(all->res[i], ' ');
 		length = len_arr(tmp);
-		ar[i] = (int *)malloc(sizeof(int) * length);
+		ar[i] = (int *)malloc(sizeof(int) * length + 1);
 		while (all->j < length)
 		{
 			ar[i][all->j] = 0;
@@ -38,18 +38,19 @@ int 	**get_ar(t_all *all)
 		}
 		ar[i][all->j] = STOP;
 		ft_putstr("\n");
-		free_arr(tmp);
+		//free_arr(tmp);
 		i++;
 	}
+	ar[i] = NULL;
 	return (ar);
 }
 
-void 		ants_on_start(int **ar, t_all *all, long int *count)
+void 		 ants_on_start(int **ar, t_all *all, long int *count)
 {
 	int i;
 
 	i = 0;
-	while (ar[i])
+	while (ar[i] && *count < all->ants)
 	{
 		(*count)++;
 		ar[i][0] = (int)*count;
@@ -96,10 +97,8 @@ void 	ants_move(int **ar, t_all *all, long int count)
 {
 	int i;
 	int j;
-	long int ant;
 
 	i = 0;
-	ant = count;
 	while (ar[i])
 	{
 		j = len_int_ar(ar[i]) - 2;
@@ -111,14 +110,13 @@ void 	ants_move(int **ar, t_all *all, long int count)
 				ar[i][j + 1] = ar[i][j];
 				ar[i][j] = 0;
 				print_way(all->res, i, j, ar[i][j + 1]);
-				ant++;
 
 			}
 			j--;
 		}
-		ft_putstr("\n");
 		i++;
 	}
+	ft_putstr("\n");
 }
 
 void 	zero_start(int **ar)
