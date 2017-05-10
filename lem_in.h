@@ -48,6 +48,8 @@ typedef struct 			s_all
 	int 				k;
 	int 				r_rec;
 	char 				**fin_res;
+	int 				*storage;
+	int 				*stoper;
 	t_node				*ss;
 	t_node				*start_save;
 	t_node				*tmp;

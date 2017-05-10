@@ -23,6 +23,8 @@ int 	**get_ar(t_all *all)
 	i = 0;
 	len = len_arr(all->res);
 	ar = (int **)malloc(sizeof(int *) * len + 1);
+	all->stoper = (int *)malloc(sizeof(int ) * len + 1);
+	all->storage = (int *)malloc(sizeof(int ) * len + 1);
 	ar[len] = NULL;
 	while (all->res[i])
 	{
@@ -119,16 +121,23 @@ void 	ants_move(int **ar, t_all *all, long int count)
 	ft_putstr("\n");
 }
 
-void 	zero_start(int **ar)
+void	stoper(t_all *all)
 {
+	char **tmp;
 	int i;
+	int j;
 
 	i = 0;
-	while (ar[i])
+	j = 0;
+	while (all->res[i])
 	{
-		ar[i][0] = 0;
+		tmp = ft_strsplit(all->res[i], ' ');
+		all->storage[i] = len_arr(tmp) - 1;
+		all->stoper[j] = all->storage[i] - all->storage[0] + i - 1;
 		i++;
+		j++;
 	}
+
 }
 
 void 	move(t_all *all, int **ar)
@@ -150,9 +159,9 @@ void	run(t_all *all)
 {
 	int i;
 	int **ar;
-
 	i = 0;
 	ar = get_ar(all);
+	stoper(all);
 	move(all, ar);
 
 
