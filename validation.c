@@ -11,7 +11,7 @@ void 	check(t_all *all)
 			!find(all->verticies, all->links[i + 1]))
 		{
 			ft_putstr("Error");
-			exit(2);
+			exit(1);
 		}
 		i++;
 	}
