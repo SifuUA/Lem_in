@@ -1,0 +1,7 @@
+#check for choosing short path when long isn't effective
+##start
+0 4 5
+10
+##end
+1 8 8
+0-1

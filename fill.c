@@ -6,8 +6,9 @@ void 	write_vert(char *str, t_all *all)
 	char 		**tmp;
 
 	tmp = ft_strsplit(str, ' ');
-	all->verticies[i++] = tmp[0];
+	all->verticies[i++] = ft_strdup(tmp[0]);
 	all->flag = 1;
+	free_arr(tmp);
 }
 
 void 	write_link(char *str, t_all *all)
@@ -56,22 +57,26 @@ void 	write_end(char **str, int i, t_all * all)
 void	fill_all(t_all *all, char **str)
 {
 	int		i;
+	char	**tmp;
+	char 	**tmp1;
 
 	i = 0;
+	tmp1 = NULL;
 	while (str[i])
 	{
+		tmp = ft_strsplit(str[i], ' ');
 		all->flag = 0;
 		if (!ft_strchr(str[i], '#') && !ft_strchr(str[i], '-') &&
-				len_arr(ft_strsplit(str[i], ' ')) == 1)
+				len_arr(tmp) == 1)
 		{
 			all->ants = ft_atoi(str[i]);
 			all->flag = 1;
 		}
 		else if (!ft_strchr(str[i], '-') &&
-				len_arr(ft_strsplit(str[i], ' ')) == 3)
+				len_arr(tmp) == 3)
 			write_vert(str[i], all);
 		else if (!ft_strchr(str[i], '#') && ft_strchr(str[i], '-')
-				 && len_arr(ft_strsplit(str[i], '-')) == 2)
+				 && len_arr((tmp1 = ft_strsplit(str[i], '-'))) == 2)
 			write_link(str[i], all);
 		if (ft_strstr(str[i], "##start") && str[i + 1])
 			write_start(str, i, all);
@@ -79,5 +84,9 @@ void	fill_all(t_all *all, char **str)
 			write_end(str, i, all);
 		control_ch(all->flag, str[i]);
 		i++;
+		//if (tmp)
+		//	free_arr(tmp);
+		if (tmp1)
+			free_arr(tmp1);
 	}
 }

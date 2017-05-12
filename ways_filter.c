@@ -66,7 +66,7 @@ void	choose_ways(t_all *all)
 	int		len;
 
 	i = 0;
-	ft_arr_putstr(all->fin_res);
+	//ft_arr_putstr(all->fin_res);
 	sample = check_ways(all->fin_res, all->start, all->end);
 	len = len_arr(sample);
 	matrix = (int **)malloc(sizeof(int*) * len);

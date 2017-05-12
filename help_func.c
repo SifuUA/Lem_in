@@ -19,7 +19,7 @@ void 	free_arr(char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		free(arr[i]);// питання з приводу фрішення???
+		ft_strdel(&arr[i]);
 		i++;
 	}
 	free(arr);
@@ -43,15 +43,19 @@ int		count_links(char **str)
 {
 	int i;
 	int count;
+	char **tmp;
 
 	i = 0;
 	count = 0;
 	while (str[i])
 	{
+		tmp = ft_strsplit(str[i], '-');
 		if (ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
-			len_arr(ft_strsplit(str[i], '-')) == 2)
+			len_arr(tmp) == 2)
 			count++;
 		i++;
+		if (tmp)
+			free_arr(tmp);
 	}
 	return (count);
 }
@@ -60,14 +64,18 @@ int		count_vert(char **str)
 {
 	int i;
 	int count;
+	char **tmp;
 
 	i = 0;
 	count = 0;
 	while (str[i])
 	{
+		tmp = ft_strsplit(str[i], ' ');
 		if (!ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
-			len_arr(ft_strsplit(str[i], ' ')) == 3)
+			len_arr(tmp) == 3)
 			count++;
+		if (tmp)
+			free_arr(tmp);
 		i++;
 	}
 	return (count);

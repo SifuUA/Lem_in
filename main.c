@@ -11,13 +11,14 @@ char	**read_and_write()
 	int 	i;
 
 	i = 0;
-	fd = open("ant_farms_samples/test18", O_RDONLY);
-	save = (char **)malloc(sizeof(char*) * 1000);
-	while (get_next_line(fd, &line) && *line != 0)
+	//fd = open("ant_farms_samples/test7", O_RDONLY);
+	save = (char **)malloc(sizeof(char*) * 10000);
+	//while (get_next_line(fd, &line) && *line != 0)
+	while (get_next_line(0, &line) && *line != 0)
 	{
 		save[i++] = line;
 	}
-	close(fd);
+	//close(fd);
 	return (save);
 }
 
@@ -40,6 +41,6 @@ int		main(int argc, char **argv)
 	//all->res[all->i + 1] = NULL;
 	//all->fin_res[all->k + 1] = NULL;
 	choose_ways(all);
-
+	//sleep(30);
 
 }
