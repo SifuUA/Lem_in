@@ -17,14 +17,14 @@ void 	write_link(char *str, t_all *all)
 	static int j;
 
 	tmp = ft_strsplit(str, '-');
-	all->links[j++] = tmp[0];
+	all->links[j++] = ft_strdup(tmp[0]);
 	if (tmp[1][ft_strlen(tmp[1]) - 1] == '\r')
 		tmp[1][ft_strlen(tmp[1]) - 1]  = '\0';
 	if (ft_strcmp(tmp[0], all->start) == 0)
-		all->dest = tmp[1];
-	all->links[j++] = tmp[1];
+		all->dest = ft_strdup(tmp[1]);
+	all->links[j++] = ft_strdup(tmp[1]);
 	all->flag = 1;
-	//free_arr(tmp);
+	free_arr(tmp);
 }
 
 void 	write_start(char **str, int i, t_all * all)
@@ -35,13 +35,13 @@ void 	write_start(char **str, int i, t_all * all)
 	if (len_arr(tmp) != 3)
 	{
 		ft_putstr("Wrong input!");
-		exit(2);
+		exit(3);
 	}
-	all->start = tmp[0];
+	all->start = ft_strdup(tmp[0]);
 	if (tmp[2][ft_strlen(tmp[2]) - 1] == '\r')
 		tmp[2][ft_strlen(tmp[2]) - 1]  = '\0';
 	all->flag = 1;
-	//free_arr(tmp);
+	free_arr(tmp);
 }
 
 void 	write_end(char **str, int i, t_all * all)
@@ -49,7 +49,7 @@ void 	write_end(char **str, int i, t_all * all)
 	char **tmp;
 
 	tmp = ft_strsplit(str[i + 1], ' ');
-	all->end = tmp[0];
+	all->end = ft_strdup(tmp[0]);
 	all->flag = 1;
 	free_arr(tmp);
 }
@@ -85,7 +85,7 @@ void	fill_all(t_all *all, char **str)
 		control_ch(all->flag, str[i]);
 		i++;
 		//if (tmp)
-		//	free_arr(tmp);
+			//free_arr(tmp);
 		if (tmp1)
 			free_arr(tmp1);
 	}

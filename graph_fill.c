@@ -24,10 +24,10 @@ void	print_graph(t_graph *graph)
 
 int		find_index(t_head *arr, char *str)
 {
-	char *p;
-	static int j;
-	int i;
-	int flag;
+	char		*p;
+	static int	j;
+	int			i;
+	int			flag;
 
 	i = 0;
 	flag = 0;
@@ -46,8 +46,6 @@ int		find_index(t_head *arr, char *str)
 			arr[i + 1].head = NULL;
 			i++;
 			continue;
-			//flag = 1;
-			//break ;
 		}
 		flag = 1;
 		i++;
@@ -78,7 +76,7 @@ void	add_new(t_graph *graph, char *src, char *dest, t_all *all)
 	graph->array[index].head = node;
 
 
-		node = add_node(dest, src);
+	node = add_node(dest, src);
 	index = find_index(graph->array, dest);
 	node->next = graph->array[index].head;
 	graph->array[index].head = node;
@@ -94,20 +92,11 @@ void 	fill_graph(t_graph *graph, t_all *all, int count)
 
 	i = 0;
 	j = 0;
-	//ft_arr_putstr(all->links);
 	while (j < count)
 	{
 		add_new(graph, all->links[i], all->links[i + 1], all);
 		i += 2;
 		j++;
 	}
-	i = 0;
-	struct s_node	*tmp;
-	/*while (i < graph->count_vert)
-	{
-		 tmp = graph->array[i].head;
-		//graph->array= tmp;
-
-	}
-*/}
+}
 

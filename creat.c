@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-t_graph	*creat_graph(int count_v)
+t_graph	*creat_graph(long int count_v)
 {
 	t_graph * graph;
 
@@ -46,7 +46,7 @@ int 	**creat_matrix(int size)
 	return (matrix);
 }
 
-t_all	*creat_struct(int count_vert, int count_links)
+t_all	*creat_struct(long int count_vert, int count_links)
 {
 	t_all *all;
 
