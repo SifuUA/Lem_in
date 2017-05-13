@@ -19,9 +19,10 @@ void 	free_arr(char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		ft_strdel(&arr[i]);
+		ft_strdel(&(arr[i]));
 		i++;
 	}
+	ft_strdel(&(arr[i]));
 	free(arr);
 }
 
@@ -74,9 +75,12 @@ int		count_vert(char **str)
 		if (!ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
 			len_arr(tmp) == 3)
 			count++;
-		if (tmp)
-			free_arr(tmp);
+
 		i++;
+		if (tmp)
+		{
+			free_arr(tmp);
+		}
 	}
 	return (count);
 }

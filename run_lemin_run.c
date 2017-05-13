@@ -1,5 +1,20 @@
 #include "lem_in.h"
 
+void 	free_int_arr(int **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
+	free(*arr);
+	*arr = NULL;
+}
+
 int		len_int_ar(int *ar)
 {
 	int i;
@@ -40,7 +55,8 @@ int 	**get_ar(t_all *all)
 		}
 		ar[i][all->j] = STOP;
 		ft_putstr("\n");
-		//free_arr(tmp);
+		if (tmp)
+			free_arr(tmp);
 		i++;
 	}
 	ar[i] = NULL;
@@ -142,8 +158,9 @@ void	stoper(t_all *all)
 		all->stoper[j] = all->storage[i] - all->storage[0] + i - 1;
 		i++;
 		j++;
+		if (tmp)
+			free_arr(tmp);
 	}
-
 }
 
 void 	move(t_all *all, int **ar)
@@ -163,14 +180,10 @@ void 	move(t_all *all, int **ar)
 
 void	run(t_all *all)
 {
-	int i;
 	int **ar;
-	i = 0;
+
 	ar = get_ar(all);
 	stoper(all);
 	move(all, ar);
-
-
-
-
+	free_int_arr(ar);
 }

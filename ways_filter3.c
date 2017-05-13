@@ -17,11 +17,19 @@ int 	find_same(char *i, char *j, t_all *all)
 		while (ar_j && ar_j[z])
 		{
 			if (ft_strcmp(ar_i[k], ar_j[z]) == 0)
+			{
+				free_arr(ar_i);
+				free_arr(ar_j);
 				return (1);
+			}
 			z++;
 		}
 		k++;
 	}
+	if (ar_i)
+		free_arr(ar_i);
+	if (ar_j)
+		free_arr(ar_j);
 	return (0);
 }
 
@@ -75,8 +83,7 @@ char	**check_matrix(int **matrix, int len, char **sample)
 			res[k++] = ft_strdup(sample[i]);
 		i++;
 	}
-	//free_arr(sample);
-	res[i] = NULL;
+	res[k] = NULL;
 	return (res);
 }
 

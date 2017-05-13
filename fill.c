@@ -61,9 +61,9 @@ void	fill_all(t_all *all, char **str)
 	char 	**tmp1;
 
 	i = 0;
-	tmp1 = NULL;
 	while (str[i])
 	{
+		tmp1 = NULL;
 		tmp = ft_strsplit(str[i], ' ');
 		all->flag = 0;
 		if (!ft_strchr(str[i], '#') && !ft_strchr(str[i], '-') &&
@@ -84,8 +84,8 @@ void	fill_all(t_all *all, char **str)
 			write_end(str, i, all);
 		control_ch(all->flag, str[i]);
 		i++;
-		//if (tmp)
-			//free_arr(tmp);
+		if (tmp)
+			free_arr(tmp);
 		if (tmp1)
 			free_arr(tmp1);
 	}

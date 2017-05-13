@@ -9,13 +9,17 @@ int 	check_res(char *res, char *str)
 	tmp = NULL;
 	if (res)
 		tmp = ft_strsplit(res, ' ');
-
 	while (tmp && tmp[i])
 	{
 		if (ft_strcmp(tmp[i], str) == 0)
+		{
+			free_arr(tmp);
 			return (1);
+		}
 		i++;
 	}
+	if (tmp)
+		free_arr(tmp);
 	return (0);
 }
 
@@ -53,11 +57,17 @@ char	*get_to(char *str, char *to)
 	while (tmp[i] && ft_strcmp(tmp[i], to) != 0)
 	{
 		hz = ft_strjoin(res, tmp[i]);
+		if (res)
+			ft_strdel(&res);
 		res = ft_strjoin(hz, " ");
+		ft_strdel(&hz);
 		i++;
 	}
-	hz = ft_strjoin(res, tmp[i]);
+	hz = ft_strjoin(res, ft_strdup(tmp[i]));
+	ft_strdel(&res);
 	res = ft_strjoin(hz, " ");
+	ft_strdel(&hz);
+	free_arr(tmp);
 	return (res);
 }
 
@@ -85,12 +95,16 @@ char	*clear_other(char **ar, char *str)
 	res = NULL;
 	while (ar[i] && ft_strcmp(ar[i], str) != 0)
 	{
-		tmp = ft_strjoin(res, ar[i]);
+		tmp = ft_strjoin(res, ft_strdup(ar[i]));
+		ft_strdel(&res);
 		res = ft_strjoin(tmp, " ");
+		ft_strdel(&tmp);
 		i++;
 	}
-	tmp = ft_strjoin(res, ar[i]);
+	tmp = ft_strjoin(res, ft_strdup(ar[i]));
+	ft_strdel(&res);
 	res = ft_strjoin(tmp, " ");
+	ft_strdel(&tmp);
 	return (res);
 }
 
