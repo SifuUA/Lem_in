@@ -85,7 +85,7 @@ int 	if_all_mark(t_node *node)
 
 
 
-char	*clear_other(char **ar, char *str)
+char	*clear_other(char **p, char *str)
 {
 	int		i;
 	char	*res;
@@ -93,15 +93,15 @@ char	*clear_other(char **ar, char *str)
 
 	i = 0;
 	res = NULL;
-	while (ar[i] && ft_strcmp(ar[i], str) != 0)
+	while (p[i] && ft_strcmp(p[i], str) != 0)
 	{
-		tmp = ft_strjoin(res, ft_strdup(ar[i]));
+		tmp = ft_strjoin(res, p[i]);
 		ft_strdel(&res);
 		res = ft_strjoin(tmp, " ");
 		ft_strdel(&tmp);
 		i++;
 	}
-	tmp = ft_strjoin(res, ft_strdup(ar[i]));
+	tmp = ft_strjoin(res, p[i]);
 	ft_strdel(&res);
 	res = ft_strjoin(tmp, " ");
 	ft_strdel(&tmp);
