@@ -58,12 +58,10 @@ int 	f_check(t_all *all, t_node *node, int dep)
 			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
 		}
 		tmp = ft_strjoin_mod2(all->res[all->i], " ");
-		//if (all->res[all->i])
-		//	ft_strdel(&(all->res[all->i]));// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		ft_strdel(&(all->res[all->i]));
 		all->res[all->i] = tmp;
 		tmp = ft_strjoin_mod2(all->res[all->i], node->dest);
-		if (all->res[all->i])
-			ft_strdel(&(all->res[all->i]));
+		ft_strdel(&(all->res[all->i]));
 		all->res[all->i] = tmp;
 		all->r_rec = 0;
 	}

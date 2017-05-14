@@ -94,7 +94,7 @@ int		main(int argc, char **argv)
 	graph = creat_graph(count_v);
 	fill_graph(graph, all, count_links(save));
 	node_start = find_node(graph, all->dest, all->start);
-	all->res[0] = node_start->begin;
+	all->res[0] = ft_strdup(node_start->begin);
 	rec_f(all, graph, node_start, 0);
 	all->res[all->i + 1] = NULL;
 	all->fin_res[all->k] = NULL;
