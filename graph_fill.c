@@ -59,8 +59,8 @@ t_node 	*add_node(char *begin, char *dest)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	node->next = NULL;
-	node->dest = dest;
-	node->begin = begin;
+	node->dest = ft_strdup(dest);
+	node->begin = ft_strdup(begin);
 	node->mark = 0;
 	return (node);
 }

@@ -1,5 +1,19 @@
 #include "lem_in.h"
 
+void 	free_int_arr_m(int **arr, int width, int high)
+{
+	int i;
+
+	i = 0;
+	while (i < high)
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
+	free(arr);
+}
+
 int		count_start_end(char *ar, char *str)
 {
 	int i;
@@ -64,10 +78,12 @@ void	choose_ways(t_all *all)
 	i = 0;
 	sample = check_ways(all->fin_res, all->start, all->end);
 	len = len_arr(sample);
-	matrix = (int **)malloc(sizeof(int *) * len);
+	matrix = (int **)malloc(sizeof(int *) * len + 1);
+	matrix[len + 1] = 0;
 	while (i < len)
 	{
 		matrix[i] = (int *)malloc(sizeof(int) * len + 1);
+		matrix[i][len + 1] = 0;
 		i++;
 	}
 	fill_matrix(matrix, sample, len, all);
@@ -78,6 +94,9 @@ void	choose_ways(t_all *all)
 	free_arr(all->res);
 	//free_arr(all->fin_res);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	all->res = clear(tmp, len);
+	free_arr(tmp);//???
+	tmp = NULL;
+	free_int_arr_m(matrix, len, i);//переделать с границами!!!
 	ft_putstr("**********************\n");
 	ft_arr_putstr(all->res);
 	run(all);

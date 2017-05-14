@@ -7,6 +7,7 @@ void 	write_vert(char *str, t_all *all)
 
 	tmp = ft_strsplit(str, ' ');
 	all->verticies[i++] = ft_strdup(tmp[0]);
+	all->verticies[i] = NULL;
 	all->flag = 1;
 	free_arr(tmp);
 }
