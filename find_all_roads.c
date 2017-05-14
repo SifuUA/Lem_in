@@ -29,6 +29,7 @@ void	aft_r(t_node **node, t_all *all)
 	*node = all->start_save->next;
 	all->flag = 0;
 	all->r_rec = 0;
+	ft_strdel(&(all->res[all->i]));
 	all->res[all->i] = all->start_save->begin;
 	tmp = ft_strjoin_mod2(all->res[all->i], " ");
 	//ft_strdel(&(all->res[all->i]));// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
