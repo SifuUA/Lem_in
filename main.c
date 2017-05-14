@@ -74,8 +74,8 @@ int		main(int argc, char **argv)
 	all->res[0] = node_start->begin;
 	rec_f(all, graph, node_start, 0);
 	all->res[all->i + 1] = NULL;
-	all->fin_res[all->k + 1] = NULL;
+	all->fin_res[all->k] = NULL;
 	choose_ways(all);
-	mem_clear(all, save, graph, node_start);
+	//mem_clear(all, save, graph, node_start);
 	//sleep(30);
 }

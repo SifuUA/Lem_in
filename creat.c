@@ -9,8 +9,8 @@ t_graph	*creat_graph(long int count_v)
 	i = 0;
 	graph = (t_graph *)malloc(sizeof(t_graph));
 	graph->count_vert = count_v;
-	graph->array = (t_head *)malloc(sizeof(t_head) * count_v);
-	while (i < count_v)
+	graph->array = (t_head *)malloc(sizeof(t_head) * count_v + 1);
+	while (i <= count_v)
 	{
 		graph->array[i].head = NULL;
 		i++;

@@ -11,12 +11,12 @@ void	check_in_while(t_all *all, t_graph *graph, t_node **node, t_node **tmp)
 	{
 		*tmp = *node;
 		all->flag = 0;
-		if (all->res[all->i])
-			ft_strdel(&(all->res[all->i]));
+		//if (all->res[all->i])
+		//	ft_strdel(&(all->res[all->i]));
 		all->res[all->i] = clear_other(p, (*node)->begin);
 	}
-	if (p)
-		free_arr(p);
+	//if (p)
+		//free_arr(p);
 	(*node)->mark = 1;
 }
 
@@ -32,7 +32,7 @@ void	aft_r(t_node **node, t_all *all)
 	//ft_strdel(&(all->res[all->i]));// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	all->res[all->i] = tmp;
 	tmp = ft_strjoin(ft_strdup(all->res[all->i]), (*node)->dest);
-	ft_strdel(&(all->res[all->i]));
+	//ft_strdel(&(all->res[all->i]));
 	all->res[all->i] = tmp;
 	all->start_save = all->start_save->next;
 }
@@ -56,12 +56,12 @@ int 	f_check(t_all *all, t_node *node, int dep)
 			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
 		}
 		tmp = ft_strjoin(all->res[all->i], " ");
-		if (all->res[all->i])
-			ft_strdel(&(all->res[all->i]));// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//if (all->res[all->i])
+		//	ft_strdel(&(all->res[all->i]));// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		all->res[all->i] = tmp;
 		tmp = ft_strjoin(all->res[all->i], node->dest);
-		if (all->res[all->i])
-			ft_strdel(&(all->res[all->i]));
+		//if (all->res[all->i])
+		//	ft_strdel(&(all->res[all->i]));
 		all->res[all->i] = tmp;
 		all->r_rec = 0;
 	}
