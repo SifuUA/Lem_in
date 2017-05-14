@@ -11,8 +11,9 @@ void 	free_int_arr(int **arr)
 		arr[i] = NULL;
 		i++;
 	}
-	free(*arr);
-	*arr = NULL;
+	free(arr[i]);
+	arr[i] = NULL;
+	free(arr);
 }
 
 int		len_int_ar(int *ar)
@@ -115,6 +116,7 @@ void 	print_way(char **res, int i, int j, int ant )
 	ft_putstr("-");
 	ft_putstr(tmp[j + 1]);
 	ft_putstr(" ");
+	free_arr(tmp);
 }
 
 void 	ants_move(int **ar, t_all *all, long int count)

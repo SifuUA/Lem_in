@@ -49,16 +49,21 @@ int 	**creat_matrix(int size)
 t_all	*creat_struct(long int count_vert, int count_links)
 {
 	t_all *all;
+	long int i;
 
+	i = 0;
 	all = (t_all *)malloc(sizeof(t_all));
 	all->start = NULL;
 	all->end = NULL;
-	all->verticies = (char **)malloc(sizeof(char*) * count_vert);
+	all->verticies = (char **)malloc(sizeof(char*) * count_vert + 1);
+	all->verticies[count_vert + 1] = NULL;
 	all->links = (char **)malloc(sizeof(char*) * (count_links * 2) + 1);
-	all->links[count_links] = NULL;
+	all->links[(count_links * 2)] = NULL;
 	all->link = count_links;
 	all->res = (char **)malloc(sizeof(char*) * count_links * 10);
+	all->res[count_links * 10] = NULL;
 	all->fin_res = (char **)malloc(sizeof(char*) * count_links * 10);
+	all->fin_res[count_links * 10] = NULL;
 	all->i = 0;
 	all->r_rec = 0;
 	all->j = 0;

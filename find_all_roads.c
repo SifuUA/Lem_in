@@ -13,8 +13,8 @@ void	check_in_while(t_all *all, t_graph *graph, t_node **node, t_node **tmp)
 	{
 		*tmp = *node;
 		all->flag = 0;
-		//if (all->res[all->i])
-		//	ft_strdel(&(all->res[all->i]));
+		if (all->res[all->i])
+			ft_strdel(&(all->res[all->i]));
 		all->res[all->i] = clear_other(p, (*node)->begin);
 	}
 	if (p)
@@ -42,7 +42,7 @@ void	aft_r(t_node **node, t_all *all)
 int 	f_check(t_all *all, t_node *node, int dep)
 {
 	char *tmp;
-
+	char *ptr;
 	tmp = NULL;
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 		ft_strcmp(node->dest, all->end) != 0)
@@ -70,7 +70,7 @@ int 	f_check(t_all *all, t_node *node, int dep)
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		all->r_rec = 1;
-		all->fin_res[all->k++] = all->res[all->i];
+		all->fin_res[all->k++] = ft_strdup(all->res[all->i]);
 		if (dep == 0 && ft_strcmp(node->dest, all->end) == 0 && node->next != NULL)
 			return (0);
 		else
@@ -100,6 +100,6 @@ void    rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
 				all->start_save->next && dep == 0)
 			aft_r(&node, all);
 		else if (node == NULL && ft_strcmp(tmp->begin, all->end) == 0)
-			all->fin_res[all->k++] = all->res[all->i];
+			all->fin_res[all->k++] = ft_strdup(all->res[all->i]);
 	}
 }

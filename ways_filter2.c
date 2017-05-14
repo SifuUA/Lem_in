@@ -24,6 +24,8 @@ int		del_contain(char **str, int size, char *current)
 		}
 		i++;
 	}
+	if (tmp)
+		free_arr(tmp);
 	return (i - j);
 }
 
