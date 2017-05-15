@@ -22,7 +22,11 @@ void 	write_link(char *str, t_all *all)
 	if (tmp[1][ft_strlen(tmp[1]) - 1] == '\r')
 		tmp[1][ft_strlen(tmp[1]) - 1]  = '\0';
 	if (ft_strcmp(tmp[0], all->start) == 0)
+	{
+		if (all->dest)
+			ft_strdel(&all->dest);//???
 		all->dest = ft_strdup(tmp[1]);
+	}
 	all->links[j++] = ft_strdup(tmp[1]);
 	all->flag = 1;
 	free_arr(tmp);

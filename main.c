@@ -108,5 +108,5 @@ int		main(int argc, char **argv)
 	all->fin_res[all->k] = NULL;
 	choose_ways(all);
 	mem_clear(all, save, graph, node_start);
-	//sleep(15);
+	sleep(15);
 }

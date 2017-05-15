@@ -97,11 +97,13 @@ char	**clear(char **str, int size)
 		if (n_mem != mem)
 		{
 			new_s = record(str, n_mem);
-			//free_arr(str);
+			free_arr(str);
 			str = new_s;
 			mem = n_mem;
+			//all->i = mem;
 		}
 		i++;
 	}
+	//all->i = mem;
 	return (str);
 }
