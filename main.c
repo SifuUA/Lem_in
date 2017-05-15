@@ -46,13 +46,6 @@ void	mem_clear(t_all *all, char **save, t_graph *graph, t_node *node_start)
 	if (all->links)
 		free_arr(all->links);
 	all->links = NULL;
-	//if (all->res)
-	//	free_arr(all->res);
-	//all->res = NULL;
-	//if (all->fin_res)
-	//	free_arr(all->fin_res);
-	//all->fin_res = NULL;
-	//del_list(all->ss);
 	all->ss = NULL;
 	ft_strdel(&(all->start));
 	ft_strdel(&(all->end));
@@ -68,7 +61,6 @@ void	mem_clear(t_all *all, char **save, t_graph *graph, t_node *node_start)
 	free(all);
 	if (save)
 		free_arr(save);
-	//del_list(node_start);
 	while (graph->array[i].head)
 	{
 		node = graph->array[i].head;
@@ -108,5 +100,4 @@ int		main(int argc, char **argv)
 	all->fin_res[all->k] = NULL;
 	choose_ways(all);
 	mem_clear(all, save, graph, node_start);
-	sleep(15);
 }
