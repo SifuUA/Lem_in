@@ -51,7 +51,7 @@ void	write_start(char **str, int i, t_all *all)
 	tmp = ft_strsplit(str[i + 1], ' ');
 	if (len_arr(tmp) != 3)
 	{
-		ft_putstr("Wrong input!");
+		ft_putstr_fd(RED"ERROR: Wrong input!\n"RESET, 2);
 		exit(3);
 	}
 	all->start = ft_strdup(tmp[0]);
@@ -91,7 +91,7 @@ void	fill_all(t_all *all, char **str)
 		else if (!ft_strchr(str[i], '#') && ft_strchr(str[i], '-') &&
 				len_arr((tmp1 = ft_strsplit(str[i], '-'))) == 2)
 			write_link(str[i], all);
-		if (ft_strstr(str[i], "##start") && str[i + 1])
+		if (ft_strstr(str[i], "##start") && str[i + 1] && str[i][7] == '\0')
 			write_start(str, i, all);
 		else if (ft_strstr(str[i], "##end") && str[i + 1])
 			write_end(str, i, all);
