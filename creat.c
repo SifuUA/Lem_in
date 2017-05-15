@@ -1,10 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   creat.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 14:57:48 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 15:00:02 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
+
+void	write_ants(t_all *all, char *str)
+{
+	all->ants = ft_atoi(str);
+	all->flag = 1;
+}
 
 t_graph	*creat_graph(long int count_v)
 {
-	t_graph * graph;
-
-	int i;
+	t_graph	*graph;
+	int		i;
 
 	i = 0;
 	graph = (t_graph *)malloc(sizeof(t_graph));
@@ -18,38 +35,10 @@ t_graph	*creat_graph(long int count_v)
 	return (graph);
 }
 
-int 	**creat_matrix(int size)
-{
-	int **matrix;
-	int i;
-	int j;
-
-	i = 0;
-	matrix = (int **)malloc(sizeof(int *) * size);
-	while (i < size)
-	{
-		matrix[i] = (int *)malloc(sizeof(int) * size + 1);
-		i++;
-	}
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			matrix[i][j] = 0;
-			j++;
-		}
-		matrix[i][j] = '\0';
-		i++;
-	}
-	return (matrix);
-}
-
 t_all	*creat_struct(long int count_vert, int count_links)
 {
-	t_all *all;
-	long int i;
+	t_all		*all;
+	long int	i;
 
 	i = 0;
 	all = (t_all *)malloc(sizeof(t_all));

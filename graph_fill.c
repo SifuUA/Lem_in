@@ -1,25 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graph_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 16:18:18 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 16:19:16 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
-void	print_graph(t_graph *graph)
+void	find_index_help(int *i, int *flag, char **p)
 {
-	int i;
-	t_node *node;
-
-	i = 0;
-	while (i < graph->count_vert)
-	{
-		node = graph->array[i].head;
-		ft_putstr("\n Adjency list:\n");
-		ft_putstr(node->begin);
-		while (node)
-		{
-			ft_putstr(" -> ");
-			ft_putstr(node->dest);
-			node = node->next;
-		}
-		ft_putstr("\n");
-		i++;
-	}
+	*i = 0;
+	*flag = 0;
+	*p = NULL;
 }
 
 int		find_index(t_head *arr, char *str)
@@ -29,9 +26,7 @@ int		find_index(t_head *arr, char *str)
 	int			i;
 	int			flag;
 
-	i = 0;
-	flag = 0;
-	p = NULL;
+	find_index_help(&i, &flag, &p);
 	if (arr[i].head)
 		p = arr[i].head->begin;
 	while (p)
@@ -53,9 +48,9 @@ int		find_index(t_head *arr, char *str)
 	return (flag == 0 ? j++ : i);
 }
 
-t_node 	*add_node(char *begin, char *dest)
+t_node	*add_node(char *begin, char *dest)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
 	node->next = NULL;
@@ -67,25 +62,22 @@ t_node 	*add_node(char *begin, char *dest)
 
 void	add_new(t_graph *graph, char *src, char *dest, t_all *all)
 {
-	t_node *node;
+	t_node	*node;
 	int		index;
 
 	node = add_node(src, dest);
 	index = find_index(graph->array, src);
 	node->next = graph->array[index].head;
 	graph->array[index].head = node;
-
-
 	node = add_node(dest, src);
 	index = find_index(graph->array, dest);
 	node->next = graph->array[index].head;
 	graph->array[index].head = node;
 	if (ft_strcmp(src, all->start) == 0 || ft_strcmp(dest, all->start) == 0)
 		all->start_node = graph->array[index];
-
 }
 
-void 	fill_graph(t_graph *graph, t_all *all, int count)
+void	fill_graph(t_graph *graph, t_all *all, int count)
 {
 	int i;
 	int j;
@@ -99,4 +91,3 @@ void 	fill_graph(t_graph *graph, t_all *all, int count)
 		j++;
 	}
 }
-

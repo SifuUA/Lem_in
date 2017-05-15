@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_func.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 16:19:45 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 16:20:48 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		len_arr(char **arr)
@@ -12,7 +24,7 @@ int		len_arr(char **arr)
 	return (i);
 }
 
-void 	free_arr(char **arr)
+void	free_arr(char **arr)
 {
 	int i;
 
@@ -42,9 +54,9 @@ int		find(char **str, char *c)
 
 int		count_links(char **str)
 {
-	int i;
-	int count;
-	char **tmp;
+	int		i;
+	int		count;
+	char	**tmp;
 
 	i = 0;
 	count = 0;
@@ -63,9 +75,9 @@ int		count_links(char **str)
 
 int		count_vert(char **str)
 {
-	int i;
-	int count;
-	char **tmp;
+	int		i;
+	int		count;
+	char	**tmp;
 
 	i = 0;
 	count = 0;
@@ -75,7 +87,6 @@ int		count_vert(char **str)
 		if (!ft_strchr(str[i], '-') && !ft_strchr(str[i], '#') &&
 			len_arr(tmp) == 3)
 			count++;
-
 		i++;
 		if (tmp)
 		{

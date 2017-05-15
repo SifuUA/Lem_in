@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   run_lemin_run_help1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 16:48:37 by okres             #+#    #+#             */
-/*   Updated: 2017/05/15 16:49:05 by okres            ###   ########.fr       */
+/*   Created: 2017/05/15 16:47:53 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 16:48:13 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	check(t_all *all)
+void	print_way(char **res, int i, int j, int ant)
 {
-	int i;
+	char	**tmp;
 
-	i = 0;
-	while (i < all->link)
-	{
-		if (!find(all->verticies, all->links[i]) ||
-			!find(all->verticies, all->links[i + 1]))
-		{
-			ft_putstr("Error");
-			exit(1);
-		}
-		i++;
-	}
-}
-
-void	control_ch(int flag, char *str)
-{
-	if (str[0] != '#' && flag == 0)
-	{
-		ft_putstr("Wrong input!");
-		exit(2);
-	}
+	tmp = ft_strsplit(res[i], ' ');
+	ft_putstr("L");
+	ft_putnbr(ant);
+	ft_putstr("-");
+	ft_putstr(tmp[j + 1]);
+	ft_putstr(" ");
+	free_arr(tmp);
 }

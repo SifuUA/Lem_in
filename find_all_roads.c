@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_all_roads.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 15:11:08 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 15:37:40 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
-
-
 
 void	check_in_while(t_all *all, t_graph *graph, t_node **node, t_node **tmp)
 {
@@ -32,7 +42,6 @@ void	aft_r(t_node **node, t_all *all)
 	ft_strdel(&(all->res[all->i]));
 	all->res[all->i] = all->start_save->begin;
 	tmp = ft_strjoin_mod2(all->res[all->i], " ");
-	//ft_strdel(&(all->res[all->i]));// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	all->res[all->i] = tmp;
 	tmp = ft_strjoin_mod2(all->res[all->i], (*node)->dest);
 	ft_strdel(&(all->res[all->i]));
@@ -40,16 +49,25 @@ void	aft_r(t_node **node, t_all *all)
 	all->start_save = all->start_save->next;
 }
 
-int 	f_check(t_all *all, t_node *node, int dep)
+void	f_check_help(t_all *all, t_node *node)
 {
-	char *tmp;
-	char *ptr;
-	tmp = NULL;
+	char	*tmp;
+
+	tmp = ft_strjoin_mod2(all->res[all->i], " ");
+	ft_strdel(&(all->res[all->i]));
+	all->res[all->i] = tmp;
+	tmp = ft_strjoin_mod2(all->res[all->i], node->dest);
+	ft_strdel(&(all->res[all->i]));
+	all->res[all->i] = tmp;
+	all->r_rec = 0;
+}
+
+int		f_check(t_all *all, t_node *node, int dep)
+{
 	if (all->res[all->i] && check_res(all->res[all->i], node->dest) &&
 		ft_strcmp(node->dest, all->end) != 0)
 	{
-		node->mark = 1;
-		return (1);
+		return (node->mark = 1);
 	}
 	else
 	{
@@ -58,19 +76,14 @@ int 	f_check(t_all *all, t_node *node, int dep)
 			all->i++;
 			all->res[all->i] = get_to(all->res[all->i - 1], node->begin);
 		}
-		tmp = ft_strjoin_mod2(all->res[all->i], " ");
-		ft_strdel(&(all->res[all->i]));
-		all->res[all->i] = tmp;
-		tmp = ft_strjoin_mod2(all->res[all->i], node->dest);
-		ft_strdel(&(all->res[all->i]));
-		all->res[all->i] = tmp;
-		all->r_rec = 0;
+		f_check_help(all, node);
 	}
 	if (ft_strcmp(node->dest, all->end) == 0)
 	{
 		all->r_rec = 1;
 		all->fin_res[all->k++] = ft_strdup(all->res[all->i]);
-		if (dep == 0 && ft_strcmp(node->dest, all->end) == 0 && node->next != NULL)
+		if (dep == 0 && ft_strcmp(node->dest, all->end) == 0 &&
+				node->next != NULL)
 			return (0);
 		else
 			return (1);
@@ -78,9 +91,9 @@ int 	f_check(t_all *all, t_node *node, int dep)
 	return (0);
 }
 
-void    rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
+void	rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (all->j++ == 0)
 	{

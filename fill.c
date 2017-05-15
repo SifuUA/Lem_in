@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 15:09:42 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 15:21:11 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
-void 	write_vert(char *str, t_all *all)
+void	write_vert(char *str, t_all *all)
 {
-	static int 	i;
-	char 		**tmp;
+	static int	i;
+	char		**tmp;
 
 	tmp = ft_strsplit(str, ' ');
 	all->verticies[i++] = ft_strdup(tmp[0]);
@@ -12,19 +24,19 @@ void 	write_vert(char *str, t_all *all)
 	free_arr(tmp);
 }
 
-void 	write_link(char *str, t_all *all)
+void	write_link(char *str, t_all *all)
 {
-	char 		**tmp;
-	static int j;
+	char		**tmp;
+	static int	j;
 
 	tmp = ft_strsplit(str, '-');
 	all->links[j++] = ft_strdup(tmp[0]);
 	if (tmp[1][ft_strlen(tmp[1]) - 1] == '\r')
-		tmp[1][ft_strlen(tmp[1]) - 1]  = '\0';
+		tmp[1][ft_strlen(tmp[1]) - 1] = '\0';
 	if (ft_strcmp(tmp[0], all->start) == 0)
 	{
 		if (all->dest)
-			ft_strdel(&all->dest);//???
+			ft_strdel(&all->dest);
 		all->dest = ft_strdup(tmp[1]);
 	}
 	all->links[j++] = ft_strdup(tmp[1]);
@@ -32,7 +44,7 @@ void 	write_link(char *str, t_all *all)
 	free_arr(tmp);
 }
 
-void 	write_start(char **str, int i, t_all * all)
+void	write_start(char **str, int i, t_all *all)
 {
 	char **tmp;
 
@@ -44,12 +56,12 @@ void 	write_start(char **str, int i, t_all * all)
 	}
 	all->start = ft_strdup(tmp[0]);
 	if (tmp[2][ft_strlen(tmp[2]) - 1] == '\r')
-		tmp[2][ft_strlen(tmp[2]) - 1]  = '\0';
+		tmp[2][ft_strlen(tmp[2]) - 1] = '\0';
 	all->flag = 1;
 	free_arr(tmp);
 }
 
-void 	write_end(char **str, int i, t_all * all)
+void	write_end(char **str, int i, t_all *all)
 {
 	char **tmp;
 
@@ -63,7 +75,7 @@ void	fill_all(t_all *all, char **str)
 {
 	int		i;
 	char	**tmp;
-	char 	**tmp1;
+	char	**tmp1;
 
 	i = 0;
 	while (str[i])
@@ -72,26 +84,18 @@ void	fill_all(t_all *all, char **str)
 		tmp = ft_strsplit(str[i], ' ');
 		all->flag = 0;
 		if (!ft_strchr(str[i], '#') && !ft_strchr(str[i], '-') &&
-				len_arr(tmp) == 1)
-		{
-			all->ants = ft_atoi(str[i]);
-			all->flag = 1;
-		}
-		else if (!ft_strchr(str[i], '-') &&
-				len_arr(tmp) == 3)
+			len_arr(tmp) == 1)
+			write_ants(all, str[i]);
+		else if (!ft_strchr(str[i], '-') && len_arr(tmp) == 3)
 			write_vert(str[i], all);
-		else if (!ft_strchr(str[i], '#') && ft_strchr(str[i], '-')
-				 && len_arr((tmp1 = ft_strsplit(str[i], '-'))) == 2)
+		else if (!ft_strchr(str[i], '#') && ft_strchr(str[i], '-') &&
+				len_arr((tmp1 = ft_strsplit(str[i], '-'))) == 2)
 			write_link(str[i], all);
 		if (ft_strstr(str[i], "##start") && str[i + 1])
 			write_start(str, i, all);
 		else if (ft_strstr(str[i], "##end") && str[i + 1])
 			write_end(str, i, all);
 		control_ch(all->flag, str[i]);
-		i++;
-		if (tmp)
-			free_arr(tmp);
-		if (tmp1)
-			free_arr(tmp1);
+		free_tmp(tmp, tmp1, &i);
 	}
 }
