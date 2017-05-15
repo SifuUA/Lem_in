@@ -60,12 +60,15 @@ void	stoper(t_all *all)
 	}
 }
 
-void	get_ar_help(int **ar, t_all *all, int len)
+int		**get_ar_help(t_all *all, int len)
 {
+	int **ar;
+
 	ar = (int **)malloc(sizeof(int *) * len + 1);
 	all->stoper = (int *)malloc(sizeof(int ) * len + 1);
 	all->storage = (int *)malloc(sizeof(int ) * len + 1);
-	ar[len] = NULL;
+	ar[len + 1] = 0;
+	return (ar);
 }
 
 int		**get_ar(t_all *all, int i, int length, char **tmp)
@@ -74,7 +77,7 @@ int		**get_ar(t_all *all, int i, int length, char **tmp)
 	long int	len;
 
 	len = len_arr(all->res);
-	get_ar_help(ar, all, len);
+	ar = get_ar_help(all, len);
 	while (all->res[i])
 	{
 		all->j = 0;
@@ -84,11 +87,9 @@ int		**get_ar(t_all *all, int i, int length, char **tmp)
 		while (all->j < length)
 		{
 			ar[i][all->j] = 0;
-			ft_putnbr(ar[i][all->j]);
 			all->j++;
 		}
 		ar[i][all->j] = STOP;
-		ft_putstr("\n");
 		if (tmp)
 			free_arr(tmp);
 		i++;

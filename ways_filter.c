@@ -99,6 +99,7 @@ void	choose_ways(t_all *all, int i, char **sample, int **matrix)
 	free_arr(all->res);
 	all->res = clear(tmp, len);
 	free_int_arr_m(matrix, len, i);
+	ft_putstr("*************************************************************************\n");
 	ft_arr_putstr(all->res);
 	run(all);
 	free_arr(all->res);

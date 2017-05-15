@@ -33,7 +33,13 @@ void	control_ch(int flag, char *str)
 {
 	if (str[0] != '#' && flag == 0)
 	{
-		ft_putstr("Wrong input!");
+		ft_putstr_fd(RED"ERROR: Wrong input!\n"RESET, 2);
 		exit(2);
 	}
+}
+
+void	put_error(void)
+{
+	ft_putstr_fd(RED"ERROR: No possible paths!\n"RESET, 2);
+	exit(4);
 }

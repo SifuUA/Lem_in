@@ -14,36 +14,37 @@
 
 void	mem_cl(char **ar_i, char **ar_j)
 {
-	free_arr(ar_i);
-	free_arr(ar_j);
-}
-
-int		find_same(char *i, char *j, t_all *all)
-{
-	char	**ar_i;
-	char	**ar_j;
-
-	all->k = 1;
-	ar_i = ft_strsplit(i, ' ');
-	ar_j = ft_strsplit(j, ' ');
-	while (ar_i[all->k] && ft_strcmp(ar_i[all->k], all->end) != 0)
-	{
-		all->z = 1;
-		while (ar_j && ar_j[all->z])
-		{
-			if (ft_strcmp(ar_i[all->k], ar_j[all->z]) == 0)
-			{
-				mem_cl(ar_i, ar_j);
-				return (1);
-			}
-			all->z++;
-		}
-		all->k++;
-	}
 	if (ar_i)
 		free_arr(ar_i);
 	if (ar_j)
 		free_arr(ar_j);
+}
+
+int		find_same(char *i, char *j, t_all *all)
+{
+	int		k;
+	int		z;
+	char	**ar_i;
+	char	**ar_j;
+
+	k = 1;
+	ar_i = ft_strsplit(i, ' ');
+	ar_j = ft_strsplit(j, ' ');
+	while (ar_i[k] && ft_strcmp(ar_i[k], all->end) != 0)
+	{
+		z = 1;
+		while (ar_j && ar_j[z])
+		{
+			if (ft_strcmp(ar_i[k], ar_j[z]) == 0)
+			{
+				mem_cl(ar_i, ar_j);
+				return (1);
+			}
+			z++;
+		}
+		k++;
+	}
+	mem_cl(ar_i, ar_j);
 	return (0);
 }
 
