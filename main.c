@@ -110,7 +110,7 @@ int		main(int argc, char **argv)
 	rec_f(all, graph, node_start, 0);
 	all->res[all->i + 1] = NULL;
 	all->fin_res[all->k] = NULL;
-	choose_ways(all);
+	choose_ways_pre(all);
 	all_clear(all);
 	mem_clear(save, graph);
 }

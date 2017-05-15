@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ways_filter2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 17:19:14 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 17:21:47 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		del_contain(char **str, int size, char *current)
 {
-	int i;
-	int j;
-	char **tmp;
-	char **tmp1;
+	int		i;
+	int		j;
+	char	**tmp;
+	char	**tmp1;
 
 	i = 0;
 	j = 0;
@@ -29,16 +41,13 @@ int		del_contain(char **str, int size, char *current)
 	return (i - j);
 }
 
-void	sort_str(char **array, int size)
+void	sort_str(char **array, int size, int i)
 {
-	int i;
-	int j;
-	char **str1;
-	char **str2;
-	char *tmp;
+	int		j;
+	char	**str1;
+	char	**str2;
+	char	*tmp;
 
-	i = 0;
-	tmp = NULL;
 	while (i < size)
 	{
 		j = 0;
@@ -60,11 +69,11 @@ void	sort_str(char **array, int size)
 	}
 }
 
-char	**record(char **str, int  mem)
+char	**record(char **str, int mem)
 {
-	int i;
-	int j;
-	char **new;
+	int		i;
+	int		j;
+	char	**new;
 
 	i = 0;
 	j = 0;
@@ -81,15 +90,14 @@ char	**record(char **str, int  mem)
 
 char	**clear(char **str, int size)
 {
-	int 	i;
-	int 	mem;
+	int		i;
+	int		mem;
 	int		n_mem;
-	char 	**new_s;
+	char	**new_s;
 
 	i = 0;
 	ft_arr_putstr(str);
-	sort_str(str, size);
-	//ft_arr_putstr(str);
+	sort_str(str, size, i);
 	mem = len_arr(str);
 	while (i < mem)
 	{
@@ -100,10 +108,8 @@ char	**clear(char **str, int size)
 			free_arr(str);
 			str = new_s;
 			mem = n_mem;
-			//all->i = mem;
 		}
 		i++;
 	}
-	//all->i = mem;
 	return (str);
 }

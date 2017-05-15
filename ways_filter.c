@@ -6,13 +6,13 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:53:18 by okres             #+#    #+#             */
-/*   Updated: 2017/05/15 16:53:46 by okres            ###   ########.fr       */
+/*   Updated: 2017/05/15 17:18:55 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void 	free_int_arr_m(int **arr, int width, int high)
+void	free_int_arr_m(int **arr, int width, int high)
 {
 	int i;
 
@@ -28,9 +28,9 @@ void 	free_int_arr_m(int **arr, int width, int high)
 
 int		count_start_end(char *ar, char *str)
 {
-	int i;
-	int count;
-	char **tmp;
+	int		i;
+	int		count;
+	char	**tmp;
 
 	i = 0;
 	count = 0;
@@ -43,20 +43,6 @@ int		count_start_end(char *ar, char *str)
 	}
 	free_arr(tmp);
 	return (count);
-}
-
-int		c_t(char **f_res, char *str)
-{
-	int i;
-
-	i = 0;
-	while (f_res[i])
-	{
-		if (ft_strcmp(f_res[i], str) == 0)
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 char	**check_ways(char **res, char *start, char *end)
@@ -79,12 +65,21 @@ char	**check_ways(char **res, char *start, char *end)
 	return (f_res);
 }
 
-void	choose_ways(t_all *all)
+void	choose_ways_pre(t_all *all)
 {
-	int 	i;
+	int		i;
 	char	**sample;
 	int		**matrix;
-	char 	**tmp;
+
+	i = 0;
+	sample = NULL;
+	matrix = NULL;
+	choose_ways(all, i, sample, matrix);
+}
+
+void	choose_ways(t_all *all, int i, char **sample, int **matrix)
+{
+	char	**tmp;
 	int		len;
 
 	i = 0;
@@ -95,18 +90,15 @@ void	choose_ways(t_all *all)
 	while (i < len)
 	{
 		matrix[i] = (int *)malloc(sizeof(int) * len + 1);
-		matrix[i][len + 1] = 0;
-		i++;
+		matrix[i++][len + 1] = 0;
 	}
 	fill_matrix(matrix, sample, len, all);
 	tmp = check_matrix(matrix, len, sample);
 	free_arr(sample);
-	sample = NULL;
 	len = len_arr(tmp);
 	free_arr(all->res);
 	all->res = clear(tmp, len);
 	free_int_arr_m(matrix, len, i);
-	ft_putstr("**********************\n");
 	ft_arr_putstr(all->res);
 	run(all);
 	free_arr(all->res);

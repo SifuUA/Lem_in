@@ -46,6 +46,7 @@ typedef struct 			s_all
 	char				*dest;
 	int 				j;
 	int 				k;
+	int					z;
 	int 				r_rec;
 	char 				**fin_res;
 	int 				*storage;
@@ -75,7 +76,7 @@ int 					if_all_mark(t_node *node);
 char					*get_to(char *str, char *to);
 struct s_node 			* find_node(t_graph *graph, char *dest, char *begin);
 int 					check_res(char *res, char *str);
-void					choose_ways(t_all *all);
+void	choose_ways(t_all *all, int i, char **sample, int **matrix);
 char					**check_matrix(int **matrix, int len, char **sample);
 char					**clear(char **str, int size);
 void					sort(char **str);
@@ -90,4 +91,5 @@ void	stoper(t_all *all);
 int		**get_ar(t_all *all, int i, int length, char **tmp);
 int		len_int_ar(int *ar);
 void 	print_way(char **res, int i, int j, int ant);
+void	choose_ways_pre(t_all *all);
 #endif

@@ -1,30 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ways_filter3.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 17:24:30 by okres             #+#    #+#             */
+/*   Updated: 2017/05/15 17:26:50 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
-
-int 	find_same(char *i, char *j, t_all *all)
+void	mem_cl(char **ar_i, char **ar_j)
 {
-	int 	k;
-	int 	z;
-	char 	**ar_i;
-	char 	**ar_j;
+	free_arr(ar_i);
+	free_arr(ar_j);
+}
 
-	k = 1;
+int		find_same(char *i, char *j, t_all *all)
+{
+	char	**ar_i;
+	char	**ar_j;
+
+	all->k = 1;
 	ar_i = ft_strsplit(i, ' ');
 	ar_j = ft_strsplit(j, ' ');
-	while (ar_i[k] && ft_strcmp(ar_i[k], all->end ) != 0)
+	while (ar_i[all->k] && ft_strcmp(ar_i[all->k], all->end) != 0)
 	{
-		z = 1;
-		while (ar_j && ar_j[z])
+		all->z = 1;
+		while (ar_j && ar_j[all->z])
 		{
-			if (ft_strcmp(ar_i[k], ar_j[z]) == 0)
+			if (ft_strcmp(ar_i[all->k], ar_j[all->z]) == 0)
 			{
-				free_arr(ar_i);
-				free_arr(ar_j);
+				mem_cl(ar_i, ar_j);
 				return (1);
 			}
-			z++;
+			all->z++;
 		}
-		k++;
+		all->k++;
 	}
 	if (ar_i)
 		free_arr(ar_i);
@@ -48,23 +62,19 @@ void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 				matrix[i][j] = 1;
 			else
 				matrix[i][j] = find_same(sample[i], sample[j], all);
-			//ft_putnbr(matrix[i][j]);
-
 			j++;
-
 		}
-		//ft_putstr("\n");
 		i++;
 	}
 }
 
 char	**check_matrix(int **matrix, int len, char **sample)
 {
-	int i;
-	int j;
-	int k;
-	int one;
-	char **res;
+	int		i;
+	int		j;
+	int		k;
+	int		one;
+	char	**res;
 
 	i = 0;
 	k = 0;
@@ -87,7 +97,7 @@ char	**check_matrix(int **matrix, int len, char **sample)
 	return (res);
 }
 
-int 	if_contain(char **s1, char **s2)
+int		if_contain(char **s1, char **s2)
 {
 	int i;
 	int j;
@@ -108,4 +118,3 @@ int 	if_contain(char **s1, char **s2)
 	}
 	return (0);
 }
-
