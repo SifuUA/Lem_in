@@ -101,7 +101,7 @@ struct s_node			*find_node(t_graph *graph, char *dest, char *begin);
 int						check_res(char *res, char *str);
 void					choose_ways(t_all *all, int i, char **sample,
 						int **matrix);
-char					**check_matrix(int **matrix, int len, char **sample);
+char					**check_matrix(int **matrix, int len, char **sample, int i);
 char					**clear(char **str, int size);
 void					fill_matrix(int **matrix, char **sample, int size,
 						t_all *all);

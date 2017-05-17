@@ -14,15 +14,36 @@
 
 int		c_t(char **f_res, char *str)
 {
-	int i;
+	char	**str1;
+	char	**str2;
+	int		i;
+	int 	j;
+	int		count;
 
 	i = 0;
+	str2 = ft_strsplit(str, ' ');
 	while (f_res[i])
 	{
-		if (ft_strcmp(f_res[i], str) == 0)
+		j = 0;
+		count = 0;
+		str1 = ft_strsplit(f_res[i], ' ');
+		while (str1[j] && str2[j])
+		{
+			if (ft_strcmp(str1[j], str2[j]) == 0)
+				count++;
+			j++;
+		}
+		if (count == j)
+		{
+			free_arr(str2);
+			free_arr(str1);
 			return (0);
+		}
+		free_arr(str1);
 		i++;
 	}
+	if (str2)
+		free_arr(str2);
 	return (1);
 }
 

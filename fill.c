@@ -39,6 +39,12 @@ void	write_link(char *str, t_all *all)
 			ft_strdel(&all->dest);
 		all->dest = ft_strdup(tmp[1]);
 	}
+	else if (ft_strcmp(tmp[1], all->start) == 0)
+	{
+		if (all->dest)
+			ft_strdel(&all->dest);
+		all->dest = ft_strdup(tmp[0]);
+	}
 	all->links[j++] = ft_strdup(tmp[1]);
 	all->flag = 1;
 	free_arr(tmp);

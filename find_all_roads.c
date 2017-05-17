@@ -108,7 +108,7 @@ void	rec_f(t_all *all, t_graph *graph, t_node *node, int dep)
 		rec_f(all, graph, tmp, dep + 1);
 		node = tmp->next;
 		all->flag = 3;
-		if (if_all_mark(all->ss) && node == NULL &&
+		if (node == NULL &&
 				all->start_save->next && dep == 0)
 			aft_r(&node, all);
 		else if (node == NULL && ft_strcmp(tmp->begin, all->end) == 0)

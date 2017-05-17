@@ -30,7 +30,7 @@ int		find_same(char *i, char *j, t_all *all)
 	k = 1;
 	ar_i = ft_strsplit(i, ' ');
 	ar_j = ft_strsplit(j, ' ');
-	while (ar_i[k] && ft_strcmp(ar_i[k], all->end) != 0)
+	while (ar_i && ar_i[k] && ft_strcmp(ar_i[k], all->end) != 0)
 	{
 		z = 1;
 		while (ar_j && ar_j[z])
@@ -69,9 +69,8 @@ void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 	}
 }
 
-char	**check_matrix(int **matrix, int len, char **sample)
+char	**check_matrix(int **matrix, int len, char **sample, int i)
 {
-	int		i;
 	int		j;
 	int		k;
 	int		one;
@@ -94,6 +93,8 @@ char	**check_matrix(int **matrix, int len, char **sample)
 			res[k++] = ft_strdup(sample[i]);
 		i++;
 	}
+	if (k == 0)
+		res[k++] = ft_strdup(sample[0]);
 	res[k] = NULL;
 	return (res);
 }

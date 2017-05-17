@@ -101,7 +101,7 @@ void	choose_ways(t_all *all, int i, char **sample, int **matrix)
 		matrix[i++][len + 1] = 0;
 	}
 	fill_matrix(matrix, sample, len, all);
-	tmp = check_matrix(matrix, len, sample);
+	tmp = check_matrix(matrix, len, sample, i);
 	free_arr(sample);
 	len = len_arr(tmp);
 	free_arr(all->res);
