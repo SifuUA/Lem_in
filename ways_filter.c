@@ -50,14 +50,22 @@ char	**check_ways(char **res, char *start, char *end)
 	int		i;
 	int		j;
 	char	**f_res;
+	int 	len;
 
 	i = 0;
 	j = 0;
-	f_res = (char **)malloc(sizeof(char *) * len_arr(res) + 1);
+	len = len_arr(res);
+	f_res = (char **)malloc(sizeof(char *) * len + 1);
+	while (i < len)
+	{
+		f_res[i] = NULL;
+		i++;
+	}
+	i = 0;
 	while (res[i])
 	{
 		if (res[i] && count_start_end(res[i], start) == 1 &&
-			count_start_end(res[i], end) == 1)
+			count_start_end(res[i], end) == 1 && c_t(f_res, res[i]))
 			f_res[j++] = ft_strdup(res[i]);
 		i++;
 	}

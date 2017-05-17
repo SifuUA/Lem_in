@@ -117,4 +117,5 @@ int						len_int_ar(int *ar);
 void					print_way(char **res, int i, int j, int ant);
 void					choose_ways_pre(t_all *all);
 void					put_error(void);
+int						c_t(char **f_res, char *str);
 #endif

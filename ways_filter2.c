@@ -12,6 +12,20 @@
 
 #include "lem_in.h"
 
+int		c_t(char **f_res, char *str)
+{
+	int i;
+
+	i = 0;
+	while (f_res[i])
+	{
+		if (ft_strcmp(f_res[i], str) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int		del_contain(char **str, int size, char *current)
 {
 	int		i;
