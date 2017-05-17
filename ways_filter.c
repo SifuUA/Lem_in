@@ -91,7 +91,7 @@ void	choose_ways(t_all *all, int i, char **sample, int **matrix)
 	int		len;
 
 	i = 0;
-	sample = check_ways(all->fin_res, all->start, all->end);
+	sample = check_ways(all->fin_res, all->start, all->end);// !!!!
 	len = len_arr(sample);
 	matrix = (int **)malloc(sizeof(int *) * len + 1);
 	matrix[len + 1] = 0;
