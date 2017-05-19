@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 17:43:19 by okres             #+#    #+#             */
-/*   Updated: 2017/05/15 17:43:21 by okres            ###   ########.fr       */
+/*   Updated: 2017/05/18 15:11:48 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ typedef struct			s_all
 	char				**fin_res;
 	int					*storage;
 	int					*stoper;
+	int					b;
+	int					v;
+	int					print;
+	int					all_ways;
 	t_node				*ss;
 	t_node				*start_save;
 	t_node				*tmp;
@@ -89,20 +93,19 @@ int						count_vert(char **str);
 t_graph					*creat_graph(long int count_v);
 t_all					*creat_struct(long int count_vert, int count_links);
 void					fill_graph(t_graph *graph, t_all *all, int count);
-void					print_graph(t_graph *graph);
 void					rec_f(t_all *all, t_graph *graph, t_node *node,
 						int dep);
 struct s_node			*find_node(t_graph *graph, char *dest,
 						char *begin);
 char					*clear_other(char **p, char *str);
-int						if_all_mark(t_node *node);
 char					*get_to(char *str, char *to);
 struct s_node			*find_node(t_graph *graph, char *dest, char *begin);
 int						check_res(char *res, char *str);
 void					choose_ways(t_all *all, int i, char **sample,
 						int **matrix);
-char					**check_matrix(int **matrix, int len, char **sample, int i);
-char					**clear(char **str, int size);
+char					**check_matrix(int **matrix, int len, char **sample,
+						t_all *all);
+char					**clear(char **str, int size, t_all *all);
 void					fill_matrix(int **matrix, char **sample, int size,
 						t_all *all);
 int						if_contain(char **s1, char **s2);
@@ -117,5 +120,10 @@ int						len_int_ar(int *ar);
 void					print_way(char **res, int i, int j, int ant);
 void					choose_ways_pre(t_all *all);
 void					put_error(void);
-int						c_t(char **f_res, char *str);
+int						c_t(char **f_res, char *str, int i);
+int						hzz(int count, int j, char **str1, char **str2);
+void					flag(t_all *all);
+void					ft_arr_putstr_mod(char **str);
+void					print_all(char **str);
+void					pr_er(void);
 #endif

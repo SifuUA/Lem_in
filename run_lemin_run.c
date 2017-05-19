@@ -53,7 +53,7 @@ int		ants_in_road(int **ar)
 	return (0);
 }
 
-void	ants_move(int **ar, t_all *all, long int count)
+void	ants_move(int **ar, t_all *all)
 {
 	int i;
 	int j;
@@ -81,13 +81,13 @@ void	ants_move(int **ar, t_all *all, long int count)
 void	move(t_all *all, int **ar)
 {
 	long int	count;
-	int			j;
 
 	count = 0;
 	ants_on_start(ar, all, &count);
+	ft_putstr("\n");
 	while (ants_in_road(ar))
 	{
-		ants_move(ar, all, count);
+		ants_move(ar, all);
 		if (count < all->ants)
 			ants_on_start(ar, all, &count);
 	}

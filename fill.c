@@ -33,6 +33,8 @@ void	write_link(char *str, t_all *all)
 	all->links[j++] = ft_strdup(tmp[0]);
 	if (tmp[1][ft_strlen(tmp[1]) - 1] == '\r')
 		tmp[1][ft_strlen(tmp[1]) - 1] = '\0';
+	if (all->start == NULL)
+		pr_er();
 	if (ft_strcmp(tmp[0], all->start) == 0)
 	{
 		if (all->dest)
@@ -57,7 +59,7 @@ void	write_start(char **str, int i, t_all *all)
 	tmp = ft_strsplit(str[i + 1], ' ');
 	if (len_arr(tmp) != 3)
 	{
-		ft_putstr_fd(RED"ERROR: Wrong input!\n"RESET, 2);
+		ft_putstr(RED"ERROR: BAD START/END!\n"RESET);
 		exit(3);
 	}
 	all->start = ft_strdup(tmp[0]);

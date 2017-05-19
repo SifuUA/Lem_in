@@ -69,33 +69,32 @@ void	fill_matrix(int **matrix, char **sample, int size, t_all *all)
 	}
 }
 
-char	**check_matrix(int **matrix, int len, char **sample, int i)
+char	**check_matrix(int **matrix, int len, char **sample, t_all *all)
 {
 	int		j;
-	int		k;
 	int		one;
 	char	**res;
 
-	i = 0;
-	k = 0;
+	all->b = 0;
+	all->v = 0;
 	res = (char **)malloc(sizeof(char *) * len + 1);
-	while (i < len)
+	while (all->b < len)
 	{
 		j = 0;
 		one = 0;
 		while (j < len)
 		{
-			if (matrix[i][j] == 1)
+			if (matrix[all->b][j] == 1)
 				one++;
 			j++;
 		}
 		if (one != len || len == 1)
-			res[k++] = ft_strdup(sample[i]);
-		i++;
+			res[all->v++] = ft_strdup(sample[all->b]);
+		all->b++;
 	}
-	if (k == 0)
-		res[k++] = ft_strdup(sample[0]);
-	res[k] = NULL;
+	if (all->v == 0)
+		res[all->v++] = ft_strdup(sample[0]);
+	res[all->v] = NULL;
 	return (res);
 }
 

@@ -6,18 +6,17 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 17:19:14 by okres             #+#    #+#             */
-/*   Updated: 2017/05/15 17:21:47 by okres            ###   ########.fr       */
+/*   Updated: 2017/05/18 12:48:22 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		c_t(char **f_res, char *str)
+int		c_t(char **f_res, char *str, int i)
 {
 	char	**str1;
 	char	**str2;
-	int		i;
-	int 	j;
+	int		j;
 	int		count;
 
 	i = 0;
@@ -33,13 +32,8 @@ int		c_t(char **f_res, char *str)
 				count++;
 			j++;
 		}
-		if (count == j)
-		{
-			free_arr(str2);
-			free_arr(str1);
+		if (hzz(count, j, str1, str2) == 0)
 			return (0);
-		}
-		free_arr(str1);
 		i++;
 	}
 	if (str2)
@@ -123,7 +117,7 @@ char	**record(char **str, int mem)
 	return (new);
 }
 
-char	**clear(char **str, int size)
+char	**clear(char **str, int size, t_all *all)
 {
 	int		i;
 	int		mem;
@@ -131,7 +125,8 @@ char	**clear(char **str, int size)
 	char	**new_s;
 
 	i = 0;
-	ft_arr_putstr(str);
+	if (all->all_ways == 1)
+		print_all(str);
 	sort_str(str, size, i);
 	mem = len_arr(str);
 	while (i < mem)

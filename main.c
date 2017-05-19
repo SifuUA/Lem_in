@@ -12,6 +12,23 @@
 
 #include "lem_in.h"
 
+void	find_flag(t_all *all, int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		if (ft_strcmp(argv[1], "-p") == 0)
+			all->print = 1;
+	}
+	if (argc == 3)
+	{
+		if (ft_strcmp(argv[1], "-p") == 0 && ft_strcmp(argv[2], "-a") == 0)
+		{
+			all->print = 1;
+			all->all_ways = 1;
+		}
+	}
+}
+
 char	**read_and_write(void)
 {
 	char	*line;
@@ -89,6 +106,7 @@ int		main(int argc, char **argv)
 	save = read_and_write();
 	count_v = count_vert(save);
 	all = creat_struct(count_v, count_links(save));
+	find_flag(all, argc, argv);
 	fill_all(all, save);
 	check(all);
 	graph = creat_graph(count_v);
@@ -103,4 +121,5 @@ int		main(int argc, char **argv)
 	choose_ways_pre(all);
 	all_clear(all);
 	mem_clear(save, graph);
+	sleep(10);
 }
