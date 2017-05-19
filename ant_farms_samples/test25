@@ -1,0 +1,46 @@
+10
+##start
+start 0 1
+##end
+end 100 100
+0 92 87
+1 93 89
+2 59 95
+3 52 53
+4 66 24
+5 79 53
+6 75 40
+0-3
+1-5
+1-4
+1-2
+2-0
+3-0
+3-6
+3-2
+3-0
+4-3
+4-5
+4-2
+5-3
+5-1
+6-2
+start-1
+start-4
+start-4
+start-2
+start-5
+start-6
+start-3
+start-5
+start-0
+start-6
+start-3
+start-6
+start-5
+start-3
+end-0
+end-5
+end-1
+end-3
+end-6
