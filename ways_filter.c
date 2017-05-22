@@ -101,8 +101,7 @@ void	choose_ways(t_all *all, int i, char **sample, int **matrix)
 		matrix[i++][len] = 0;
 	}
 	fill_matrix(matrix, sample, len, all);
-	if (sample[0] == NULL)
-		sample[0] = ft_strdup(all->fin_res[0]);
+	sample[0] = sample[0] == NULL ? ft_strdup(all->fin_res[0]) : sample[0];
 	tmp = check_matrix(matrix, len, sample, all);
 	free_arr(sample);
 	len = len_arr(tmp);

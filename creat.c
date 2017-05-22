@@ -87,6 +87,6 @@ t_all	*creat_struct(long int count_vert, int count_links)
 	all->r_rec = 0;
 	all->j = 0;
 	all->k = 0;
-	all->tmp = NULL;// almost fin
+	all->tmp = NULL;
 	return (all);
 }

@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 17:43:50 by okres             #+#    #+#             */
-/*   Updated: 2017/05/15 17:46:10 by okres            ###   ########.fr       */
+/*   Updated: 2017/05/18 18:25:38 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,4 @@ int		main(int argc, char **argv)
 	choose_ways_pre(all);
 	all_clear(all);
 	mem_clear(save, graph);
-	sleep(10);
 }
